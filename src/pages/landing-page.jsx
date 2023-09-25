@@ -76,18 +76,19 @@ return (
             </motion.div>)}
             </AnimatePresence>
         </section>
-              <div>
-                <p className="text-4xl w-2/4 mt-12 ml-5 font-bold">
-The <span className="text-cyan-700">NO. 1</span> solution to all your card needs.
+              <div className="w-2/4 mb-5 shadow-[4.0px_8.0px_8.0px_rgba(0,0,0,0.38)]">
+                <p className="text-4xl mb-5 mt-12 ml-5 font-bold">
+The <span className="text-cobalt">NO. 1</span> solution to all your card needs.
 </p>
         </div>
+
+        <button className="self-center rounded-md bg-gradient-to-r from-purple-500 to-cyan-600 hover:from-red-700 hover:to-purple-900 font-bold w-44 h-12 shadow-[0px_10px_10px_0px_rgba(25,53,171,0.75)]">Create a free account</button>
+
         <div className="mt-8 mx-5">
             <p className="text-lg ">Have you been searching for ways on how to get virtual or physical cards?</p>
             <p>Well, look no further! KNSCARDSOLUTION has got you covered.</p>
             <p>With KNSCARDSOLUTION, you can get safe, trusted and reliable virtual or physical cards to handle all your transactions across all platforms</p>
         </div>
-
-        <button className="self-center rounded-md bg-gradient-to-r from-purple-500 to-cyan-600 hover:from-red-700 hover:to-purple-900  w-44 h-12">Create a free account</button>
         
     </div>
 )
