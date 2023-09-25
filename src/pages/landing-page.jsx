@@ -7,7 +7,7 @@ export default function Landing() {
 const [mobileNav, toggleMobileNav] = useCycle(false, true)
 
 return (
-    <div>
+    <div className="flex flex-col">
         <section className="flex drop-shadow-lg bg-white justify-between w-full h-16 p-5">
             <div>
                 <h2>KNSCARDSOLUTION</h2>
@@ -64,12 +64,13 @@ return (
 The <span className="text-green-700">NO. 1</span> solution to all your card needs.
 </p>
         </div>
-        <div>
-            <p>Have you been searching for ways on how to get virtual or physical cards?</p>
-            <p>Well, look no further!</p>
-            <p>KNSCARDSOLUTION has got you covered.</p>
+        <div className="mt-8 mx-5">
+            <p className="text-lg ">Have you been searching for ways on how to get virtual or physical cards?</p>
+            <p>Well, look no further! KNSCARDSOLUTION has got you covered.</p>
             <p>With KNSCARDSOLUTION, you can get safe, trusted and reliable virtual or physical cards to handle all your transactions across all platforms</p>
         </div>
+
+        <button className="self-center rounded-md bg-gradient-to-r from-purple-500 to-cyan-600 hover:from-red-700 hover:to-purple-900  w-44 h-12">Create a free account</button>
         
     </div>
 )
