@@ -3,6 +3,7 @@ import { motion, useCycle, AnimatePresence } from "framer-motion";
 import Navbar from "../components/navbar";
 import creditCard from "../images/credit-card.png"
 
+import Carousel from "../components/carousel";
 
 export default function Landing() {
 
@@ -35,11 +36,15 @@ The <span className="text-cobalt">NO. 1</span> solution to all your card needs.
 
         <button className="self-center rounded-md bg-gradient-to-r from-purple-800 to-cyan-800 hover:from-red-700 hover:to-purple-900 font-bold w-44 h-12 shadow-[0px_10px_10px_0px_rgba(25,53,171,0.75)] text-white">Create a free account</button>
 
+
+
         <div className="mt-8 mx-5">
             <p className="text-lg ">Have you been searching for ways on how to get virtual or physical cards?</p>
-            <p>Well, look no further! KNSCARDSOLUTION has got you covered.</p>
-            <p>With KNSCARDSOLUTION, you can get safe, trusted and reliable virtual or physical cards to handle all your transactions across all platforms</p>
+            <p  className="text-lg ">Well, look no further! KNSCARDSOLUTION has got you covered.</p>
+            <p  className="text-lg ">With KNSCARDSOLUTION, you can get safe, trusted and reliable virtual or physical cards to handle all your transactions across all platforms</p>
         </div>
+
+        <Carousel />
         
     </div>
 )

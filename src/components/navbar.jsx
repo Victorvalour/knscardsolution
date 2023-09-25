@@ -54,19 +54,23 @@ exit="closed"
 className="fixed right-0 top-20 shadow-[10px_10px_10px_0px_rgba(0,0,0,0.8)] bg-slate-500 w-64">
             <div>
                 <ul className="flex flex-col text-center my-10 space-y-12">
-                    <li className="border-b-2">
+                    <li key="1"
+                    className="border-b-2">
                         <a href="#"
                         className="text-2xl font-bold text-white">Home</a>
                     </li>
-                    <li className="border-b-2">
+                    <li  key="2"
+                    className="border-b-2">
                         <a href="#"
                         className="text-2xl font-bold text-white ">About</a>
                     </li>
-                    <li className="border-b-2">
+                    <li  key="3"
+                    className="border-b-2">
                         <a href="#"
                         className="text-2xl font-bold text-white">Contact Us</a>
                     </li>
-                    <li className="">
+                    <li  key="4"
+                    className="">
                         <a href="#"
                         className="text-2xl font-bold text-white">Create a free account</a>
                     </li>
