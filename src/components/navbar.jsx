@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { motion, useCycle, AnimatePresence } from "framer-motion";
 import Logo from "../images/KNS-LOGO-PNG.png"
 
@@ -69,11 +70,13 @@ className="fixed right-0 top-20 shadow-[10px_10px_10px_0px_rgba(0,0,0,0.8)] bg-s
                         <a href="#"
                         className="text-2xl font-bold text-white">Contact Us</a>
                     </li>
+                <Link to='/signup'>
                     <li  key="4"
                     className="">
                         <a href="#"
                         className="text-2xl font-bold text-white">Create a free account</a>
                     </li>
+                    </Link>
                 </ul>
             </div>
 </motion.div>)}

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { motion, useCycle, AnimatePresence } from "framer-motion";
 import Navbar from "../components/navbar";
 import creditCard from "../images/credit-card.png"
@@ -34,7 +35,11 @@ The <span className="text-cobalt">NO. 1</span> solution to all your card needs.
       
         </div>
 
-        <button className="self-center rounded-md bg-gradient-to-r from-purple-800 to-cyan-800 hover:from-red-700 hover:to-purple-900 font-bold w-44 h-12 shadow-[0px_10px_10px_0px_rgba(25,53,171,0.75)] text-white">Create a free account</button>
+     <Link to='/signup' className="w-48 mx-auto">
+       <button
+     className="self-center rounded-md bg-gradient-to-r from-purple-800 to-cyan-800 hover:from-red-700 hover:to-purple-900 font-bold w-48 h-12 shadow-[0px_10px_10px_0px_rgba(25,53,171,0.75)] text-white">Create a free account
+        </button>
+     </Link>
 
 
 
