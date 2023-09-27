@@ -14,12 +14,12 @@ const firebaseConfig = {
   storageBucket: "knscardsolution.appspot.com",
   messagingSenderId: "877419255068",
   appId: "1:877419255068:web:163837d91ce909165296d9",
-  measurementId: "G-65F2LNVKYG"
+  measurementId: "G-65F2LNVKYG",
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
-
+export default app;
 // Initialize Firebase Authentication and get a reference to the service
-const auth = getAuth(app);
+export const auth = getAuth(app);

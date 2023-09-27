@@ -1,8 +1,37 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 import Logo from "../images/KNS-LOGO-PNG.png"
+import { UserAuth } from '../context/AuthContext'
+import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function SignUP() {
+const [email, setEmail] =useState('')
+const [password, setPassword] = useState('')
+const [error, setError] = useState('')
+
+const { createUser } = UserAuth()
+
+const navigate = useNavigate()
+
+const handleSubmit = async (e) => {
+  e.preventDefault()
+  setError('')
+  try{
+      await createUser(email, password);
+
+      navigate('/dashboard');
+
+      toast("Account creation successful. LOGIN");
+      
+  } 
+  catch (e) {
+    setError(e.message)
+    console.log(e.message);
+
+  }
+}
+
   return (
     <div className='bg-cobalt h-[100%] pt-16 pb-10'>
         <div>
@@ -10,7 +39,8 @@ export default function SignUP() {
              <img src={Logo} alt="" className="w-20 h-16 p-0" />
              <h2 className="font-gothic"><span className="text-cobalt text-lg">KNS</span><span className="text-orange-500">CARD</span>SOLUTION</h2>
           </div> 
-            <form className='w-[90%] rounded-lg bg-gray-200 mx-auto'>
+            <form onSubmit={handleSubmit}
+            className='w-[90%] rounded-lg bg-gray-200 mx-auto'>
                 <p className='text-3xl font-semibold text-center'>Create account</p>
                 <p className='text-lg text-center'>Let's get started on your card.</p>
             <div className='flex flex-col  w-[90%] mx-auto'>            
@@ -21,15 +51,17 @@ export default function SignUP() {
                 className='h-16 rounded-md text-xl my-2' />
 
                 <input type="email" placeholder='Email Address'
+                onChange={(e) => setEmail(e.target.value)}
                 className='h-16 rounded-md text-xl my-2' />
 
                 <input type="name" placeholder='Phone Number'
                 className='h-16 rounded-md text-xl my-2' />
 
                 <input type="password" placeholder='Password'
+                onChange={(e) => setPassword(e.target.value)}
                 className='h-16 rounded-md text-xl my-2' />
                 
-                <input type="password" placeholder='Confirm Password'
+                <input type="text" placeholder='Confirm Password'
                 className='h-16 rounded-md text-xl my-2' />
 
                 <p>By click the "Create account" button, you agree to knscardsolution's <span className='text-blue-800'>terms of service.</span></p>
@@ -44,9 +76,11 @@ export default function SignUP() {
                 <Link to='/signin'>
                 <span className='text-blue-600 underline'>Login to your account</span>
                 </Link></p>
-
+          
             </form>
+     
         </div>
+        <ToastContainer />
     </div>
   )
 }

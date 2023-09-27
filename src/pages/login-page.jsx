@@ -1,12 +1,29 @@
 import React from 'react'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Logo from "../images/KNS-LOGO-PNG.png"
 import { useState } from 'react'
+import { UserAuth } from '../context/AuthContext';
 
 export default function Login() {
 const [email, setEmail] = useState('');
 const [password, setPassword] = useState('')
+const [error, setError] = useState('')
+const navigate = useNavigate()
 
+const  { login } = UserAuth();
+
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  setError('')
+  try {
+      await login(email, password)
+      navigate('/dashboard')
+
+  } catch (e) {
+    setError(e.message)
+    console.log(e.message)
+  }
+}
   return (
     <div className='bg-cobalt h-[100vh] pt-16'>
         <div className=''>
@@ -14,16 +31,22 @@ const [password, setPassword] = useState('')
              <img src={Logo} alt="" className="w-20 h-16 p-0" />
              <h2 className="font-gothic"><span className="text-cobalt text-lg">KNS</span><span className="text-orange-500">CARD</span>SOLUTION</h2>
           </div> 
-            <form className='w-[90%] rounded-lg bg-gray-200 mx-auto'>
+            <form 
+            onSubmit={handleSubmit}
+            className='w-[90%] rounded-lg bg-gray-200 mx-auto'>
                 <p className='text-3xl font-semibold text-center'>Sign in</p>
                 <p className='text-lg text-center'>Log into your account.</p>
             <div className='flex flex-col  w-[90%] mx-auto'>            
 
-                <input type="email" placeholder='Email Address'
+                <input 
+                onChange={(e) => setEmail(e.target.value)}
+                type="email" placeholder='Email Address'
                 className='h-16 rounded-md text-xl my-2' />
 
 
-                <input type="password" placeholder='Password'
+                <input
+                onChange={(e) => setPassword(e.target.value)}
+                type="password" placeholder='Password'
                 className='h-16 rounded-md text-xl my-2' />
                 
                 <p className='text-end'>Forgot Password?</p>
