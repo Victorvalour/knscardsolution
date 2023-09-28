@@ -74,7 +74,14 @@ className="fixed right-0 top-20 shadow-[10px_10px_10px_0px_rgba(0,0,0,0.8)] bg-c
                     <li  key="4"
                     className="">
                         <a href="#"
-                        className="text-2xl font-bold text-white">Create a free account</a>
+                        className="text-2xl font-bold border-b-2 text-white">Create a free account</a>
+                    </li>
+                    </Link>
+
+                    <Link to='/signin'>
+                    <li  key="5"
+                    className="text-2xl font-bold text-white">
+                       Sign In
                     </li>
                     </Link>
                 </ul>

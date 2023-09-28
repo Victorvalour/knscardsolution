@@ -65,7 +65,7 @@ initial="closed"
 animate="open"
 exit="closed"
 
-className="fixed  top-20 shadow-[10px_10px_10px_0px_rgba(0,0,0,0.8)] bg-cobalt w-64">
+className="fixed h-[700px] top-20 shadow-[10px_10px_10px_0px_rgba(0,0,0,0.8)] bg-cobalt w-64 rounded-2xl">
             <div>
                 <div className="flex flex-col text-center my-10 space-y-12">
                     <div key="1"
@@ -85,7 +85,7 @@ className="fixed  top-20 shadow-[10px_10px_10px_0px_rgba(0,0,0,0.8)] bg-cobalt w
                     </div>
                 
                     <div  key="4"
-                    className="">
+                    className="pt-[350px]">
                         <a href="#"
                         className="text-2xl font-bold text-white"
                         onClick={handleLogout}>Log Out</a>

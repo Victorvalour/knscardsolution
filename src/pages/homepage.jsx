@@ -15,9 +15,9 @@ const Homepage = () => {
               Welcome, {user && user.email}
             </p>
             </div>
-            <div className='w-80 h-52 bg-blue-300 self-center mt-8 flex p-4'>
-              <div className='bg-blue-500 h-32 m-2 text-center text-2xl w-1/2'><p>Request virtual<br /> card</p></div>
-            <div className='bg-orange-600 h-32 m-2 w-1/2 text-center text-2xl'><p>Request Physical Card</p></div>
+            <div className='w-80 rounded-xl h-52 bg-blue-300 self-center mt-8 flex p-4'>
+              <div className='bg-blue-600 rounded-xl h-32 m-2 text-center text-2xl w-1/2 hover:bg-blue-500'><p className='text-white font-bold'>Request virtual<br /> card</p></div>
+            <div className='bg-orange-600 rounded-xl h-32 m-2 w-1/2 text-center text-2xl hover:bg-orange-500'><p className='text-white font-bold'>Request Physical Card</p></div>
           </div>
      
     </div>
