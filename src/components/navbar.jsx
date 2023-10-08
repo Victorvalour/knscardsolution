@@ -24,17 +24,17 @@ export default function Navbar() {
                 closed: { rotate:0, y: 0},
                 open: { rotate:45, y:10},
             }} 
-            className="w-12 h-1.5 bg-orange-500 block rounded-sm"></motion.span>
+            className="w-12 h-1.5 bg-black block rounded-sm"></motion.span>
             <motion.span variants={{
                 closed: { opacity: 1},
                 open: { opacity: 0},
             }} 
-            className="w-12 h-1.5 bg-orange-500 block rounded-sm"></motion.span>
+            className="w-12 h-1.5 bg-black block rounded-sm"></motion.span>
             <motion.span  variants={{
                 closed: { rotate: 0, y:0},
                 open: { rotate: -45, y:-10},
             }} 
-             className="w-12 h-1.5 bg-orange-500 block rounded-sm"></motion.span>
+             className="w-12 h-1.5 bg-black block rounded-sm"></motion.span>
         </motion.button>
 </div>
     <AnimatePresence>
@@ -52,7 +52,7 @@ initial="closed"
 animate="open"
 exit="closed"
 
-className="fixed right-0 top-20 shadow-[10px_10px_10px_0px_rgba(0,0,0,0.8)] bg-cobalt w-64">
+className="fixed right-0 top-20 shadow-[10px_10px_10px_0px_rgba(0,0,0,0.8)] bg-cobalt w-full">
             <div>
                 <ul className="flex flex-col text-center my-10 space-y-12">
                     <li key="1"
