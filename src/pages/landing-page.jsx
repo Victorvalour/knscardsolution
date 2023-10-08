@@ -13,7 +13,7 @@ return (
     <div className="flex flex-col">
 
             <Navbar />
-<div className="flex mb-5 mt-12">
+<div className="flex  mb-5 mt-12">
              
                 <p className="text-4xl ml-5 font-bold">
 The <span className="text-cobalt">NO. 1</span> solution to all your card needs.
@@ -31,7 +31,7 @@ The <span className="text-cobalt">NO. 1</span> solution to all your card needs.
 
      <motion.div
             id="card-spin"
-            className="w-2/4 h-full -z-10 p-4"
+            className="w-2/4 h-full -z-10 p-4 mx-auto"
             initial={{ rotate: 0 }}
             animate={{ rotate: 360 }}
             transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
