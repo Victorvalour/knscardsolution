@@ -12,7 +12,7 @@ export default function Navbar() {
 <section className="flex drop-shadow-lg bg-white justify-between w-full h-20 pt-3">
 <div className="flex items-center">
     <img src={Logo} alt="" className="w-20 h-16 p-0" />
-    <h2 className="font-gothic"><span className="text-cobalt text-lg">KNS</span><span className="text-orange-500">CARD</span>SOLUTION</h2>
+    <h2 className="font-gothic  text-sm"><span className="text-cobalt text-lg">KNS</span><span className="text-orange-500">CARD</span>SOLUTION</h2>
 </div> 
 <div>
         <motion.button 

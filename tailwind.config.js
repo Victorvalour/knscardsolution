@@ -5,6 +5,7 @@ export default {
     extend: {
       fontFamily: {
         gothic: ["Dela Gothic One"],
+        spaceGrotesk: ["Space Grotesk"],
       },
       colors: {
         cobalt: "#0047ab",
