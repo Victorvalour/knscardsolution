@@ -33,8 +33,8 @@ const handleSubmit = async (e) => {
 }
 
   return (
-    <div className='bg-cobalt h-[100%] pt-16 pb-10'>
-        <div>
+    <div className='bg-cobalt h-[100vh] pt-16 pb-10'>
+        <div className='h-full'>
           <div className="flex items-center bg-white w-[80%] mx-auto rounded-xl py-2 px-3 mb-8 border-black border-4">
              <img src={Logo} alt="" className="w-20 h-16 p-0" />
              <h2 className="font-gothic"><span className="text-cobalt text-lg">KNS</span><span className="text-orange-500">CARD</span>SOLUTION</h2>
@@ -44,17 +44,19 @@ const handleSubmit = async (e) => {
                 <p className='text-3xl font-semibold text-center'>Create account</p>
                 <p className='text-lg text-center'>Let's get started on your card.</p>
             <div className='flex flex-col  w-[90%] mx-auto'>            
-                <input type="name" placeholder='First Name'
+               
+               
+           {/*     <input type="name" placeholder='First Name'
                 className='h-16 rounded-md text-xl my-2'/>
 
                 <input type="name" placeholder='Last Name'
                 className='h-16 rounded-md text-xl my-2' />
 
+                    <input type="name" placeholder='Phone Number'
+  className='h-16 rounded-md text-xl my-2' /> */}
+
                 <input type="email" placeholder='Email Address'
                 onChange={(e) => setEmail(e.target.value)}
-                className='h-16 rounded-md text-xl my-2' />
-
-                <input type="name" placeholder='Phone Number'
                 className='h-16 rounded-md text-xl my-2' />
 
                 <input type="password" placeholder='Password'
