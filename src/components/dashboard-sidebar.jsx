@@ -24,7 +24,7 @@ const DashboardSidebar = () => {
 
 
 
-<section className=" bg-white justify-between w-full h-20 pt-3">
+<section className=" bg-white justify-between w-full h-[8vh] pt-3">
 <div className='flex w-full justify-between items-center px-3'>
         <motion.button 
         animate={mobileNav ? "open" : "closed"}
@@ -67,34 +67,41 @@ initial="closed"
 animate="open"
 exit="closed"
 
-className="fixed h-[700px] top-20 shadow-[10px_10px_10px_0px_rgba(0,0,0,0.8)] bg-cobalt w-64 rounded-2xl">
-            <div>
-                <div className="flex flex-col text-center my-10 space-y-12">
+className="fixed h-[60vh] top-20 shadow-[10px_10px_10px_0px_rgba(0,0,0,0.8)] bg-slate-100 w-64 rounded-2xl mb-36 flex flex-col pt-16 pb-6 text-center  justify-between">
+           
+               <div className='flex flex-col space-y-12'>
+             
                     <div key="1"
                     className="border-b-2">
                         <a href="#"
-                        className="text-2xl bg-slate-500 font-bold text-white">Home</a>
+                        className="text-2xl font-semibold">Home</a>
                     </div>
                     <div  key="2"
                     className="border-b-2">
                         <a href="#"
-                        className="text-2xl font-bold text-white ">My cards</a>
+                        className="text-2xl ">My cards</a>
                     </div>
                     <div  key="3"
                     className="border-b-2">
                         <a href="#"
-                        className="text-2xl font-bold text-white">Orders</a>
+                        className="text-2xl">Transactions</a>
                     </div>
-                
-                    <div  key="4"
-                    className="pt-[350px]">
+                    <div  key="3"
+                    className="border-b-2">
                         <a href="#"
-                        className="text-2xl font-bold text-white"
-                        onClick={handleLogout}>Log Out</a>
+                        className="text-2xl">Accounts</a>
                     </div>
-                  
+                    </div>
+
+                    <div  key="4"
+                    className="">
+                        <a href="#"
+                        className="text-2xl font-bold "
+                        onClick={handleLogout}>Log Out</a>
+               
                 </div>
-            </div>
+         
+
 </motion.div>)}
 </AnimatePresence>
 </section>

@@ -18,7 +18,7 @@ const Homepage = () => {
             </p>
             </div>
           <div className='px-4'>
-            <div className='w-full  rounded-xl h-52 bg-blue-300 self-center mt-5 p-4'>
+            <div className='w-full  rounded-xl h-52 bg-blue-200 self-center mt-5 p-4'>
                 <div className='flex w-full h-fit items-center justify-between'>
                   <p className='text-4xl font-semibold'>Balance</p>
                   <div className='flex gap-2 items-center font-semibold bg-blue-200 h-fit py-1 px-2 border-2 rounded-3xl'> <FontAwesomeIcon icon={faRepeat} /> <p className='text-xl '>Naira</p></div>
