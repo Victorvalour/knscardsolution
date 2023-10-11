@@ -5,12 +5,12 @@ import { faCreditCard, faHouse, faGear, faUser } from '@fortawesome/free-solid-s
 
 const BottomNav = () => {
   return (
-    <div className='fixed flex bottom-0 w-full  h-28 items-center justify-between px-4 border-t-4 border-slate-300'>
+    <div className='fixed flex bottom-0 w-full  h-20 items-center justify-between px-4 border-t-4 border-slate-300'>
 
-<FontAwesomeIcon icon={faHouse} style={{color: "#23334d"}} size='3x'/>
-<FontAwesomeIcon icon={faCreditCard} style={{color: "#58719d"}} size='3x' />
-<FontAwesomeIcon icon={faGear}  style={{color: "#58719d"}} size='3x'/>
-<FontAwesomeIcon icon={faUser} style={{color: "#58719d"}} size='3x'/>
+<FontAwesomeIcon icon={faHouse} style={{color: "#23334d"}} size='2x'/>
+<FontAwesomeIcon icon={faCreditCard} style={{color: "#58719d"}} size='2x' />
+<FontAwesomeIcon icon={faGear}  style={{color: "#58719d"}} size='2x'/>
+<FontAwesomeIcon icon={faUser} style={{color: "#58719d"}} size='2x'/>
     </div>
   )
 }
