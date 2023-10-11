@@ -3,6 +3,8 @@ import { motion, useCycle, AnimatePresence } from 'framer-motion'
 import { Link, useNavigate } from 'react-router-dom'
 import userIMG from '../images/user.svg'
 import { UserAuth } from '../context/AuthContext'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBell } from '@fortawesome/free-solid-svg-icons';
 
 const DashboardSidebar = () => {
     const { user, logout} = UserAuth()
@@ -22,7 +24,7 @@ const DashboardSidebar = () => {
 
 
 
-<section className="flex drop-shadow-lg bg-white justify-between w-full h-20 pt-3">
+<section className=" bg-white justify-between w-full h-20 pt-3">
 <div className='flex w-full justify-between items-center px-3'>
         <motion.button 
         animate={mobileNav ? "open" : "closed"}
@@ -33,22 +35,22 @@ const DashboardSidebar = () => {
                 closed: { rotate:0, y: 0},
                 open: { rotate:45, y:10},
             }} 
-            className="w-12 h-1.5 bg-orange-500 block rounded-sm"></motion.span>
+            className="w-12 h-1.5 bg-black block rounded-sm"></motion.span>
             <motion.span variants={{
                 closed: { opacity: 1},
                 open: { opacity: 0},
             }} 
-            className="w-12 h-1.5 bg-orange-500 block rounded-sm"></motion.span>
+            className="w-12 h-1.5 bg-black block rounded-sm"></motion.span>
             <motion.span  variants={{
                 closed: { rotate: 0, y:0},
                 open: { rotate: -45, y:-10},
             }} 
-             className="w-12 h-1.5 bg-orange-500 block rounded-sm"></motion.span>
+             className="w-12 h-1.5 bg-black block rounded-sm"></motion.span>
         </motion.button>
 
         <p className='text-2xl'>Dashboard</p>
 
-        <img src={userIMG} alt="" className='w-10 h-10' />
+        <FontAwesomeIcon icon={faBell} size="xl" />
 </div>
     <AnimatePresence>
 {mobileNav && ( <motion.div 
