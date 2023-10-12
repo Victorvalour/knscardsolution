@@ -7,6 +7,7 @@ import Login from './pages/login-page'
 import Homepage from './pages/homepage'
 import { AuthContextProvider } from './context/AuthContext'
 import ProtectedRoute from './components/ProtectedRoute'
+import ProfileForm from './pages/profile-form'
 
 
 export default function App() {
@@ -19,6 +20,9 @@ export default function App() {
       <Route path='/' element={<Landing />}/>
       <Route path='/signup' element={<SignUP />} />
       <Route path='/signin' element={<Login />} />
+
+      <Route path='/profile-form' element={<ProfileForm />} />
+
       <Route path='/dashboard' element={
        <ProtectedRoute> 
       <Homepage />

@@ -29,7 +29,7 @@ const DashboardSidebar = () => {
         <motion.button 
         animate={mobileNav ? "open" : "closed"}
         onClick= {() => toggleMobileNav()}
-        className="flex flex-col space-y-1 mr-3"
+        className="flex flex-col space-y-1 "
         >
             <motion.span variants={{
                 closed: { rotate:0, y: 0},
