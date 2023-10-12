@@ -4,7 +4,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import userIMG from '../images/user.svg'
 import { UserAuth } from '../context/AuthContext'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBell } from '@fortawesome/free-solid-svg-icons';
+import { faBell, faCreditCard, faHouse, faFileInvoice, faWallet, faArrowRightFromBracket } from '@fortawesome/free-solid-svg-icons';
 
 const DashboardSidebar = () => {
     const { user, logout} = UserAuth()
@@ -48,7 +48,7 @@ const DashboardSidebar = () => {
              className="w-12 h-1.5 bg-black block rounded-sm"></motion.span>
         </motion.button>
 
-        <p className='text-2xl'>Dashboard</p>
+        <p className='text-2xl'></p>
 
         <FontAwesomeIcon icon={faBell} size="xl" />
 </div>
@@ -67,34 +67,40 @@ initial="closed"
 animate="open"
 exit="closed"
 
-className="fixed h-[60vh] top-20 shadow-[10px_10px_10px_0px_rgba(0,0,0,0.8)] bg-slate-100 w-64 rounded-2xl mb-36 flex flex-col pt-16 pb-6 text-center  justify-between">
+className="fixed h-[60vh]  shadow-[5px_5px_10px_0px_rgba(0,0,0,0.8)] top-[8vh] bg-white w-[80vw] rounded-2xl flex flex-col pt-16 pb-6 text-center  justify-between">
            
                <div className='flex flex-col space-y-12'>
              
                     <div key="1"
-                    className="border-b-2">
+                    className="border-b-2 flex ml-[20%] gap-5 items-center">
+                        <FontAwesomeIcon size='xl' icon={faHouse} />
                         <a href="#"
-                        className="text-2xl font-semibold">Home</a>
+                        className="text-2xl font-bold">Home</a>
                     </div>
                     <div  key="2"
-                    className="border-b-2">
+                    className="border-b-2 flex ml-[20%] gap-5 items-center">
+                        <FontAwesomeIcon size='xl' icon={faCreditCard} />
                         <a href="#"
                         className="text-2xl ">My cards</a>
                     </div>
                     <div  key="3"
-                    className="border-b-2">
+                    className="border-b-2 flex ml-[20%] gap-5 items-center">
+                        <FontAwesomeIcon size='xl' icon={faFileInvoice} />
                         <a href="#"
                         className="text-2xl">Transactions</a>
                     </div>
                     <div  key="3"
-                    className="border-b-2">
+                    className="border-b-2 flex ml-[20%] gap-5 items-center">
+                        <FontAwesomeIcon size='xl' icon={faWallet} />
                         <a href="#"
                         className="text-2xl">Accounts</a>
                     </div>
                     </div>
 
                     <div  key="4"
-                    className="">
+                    className="gap-5 flex justify-center items-center">
+
+                        <FontAwesomeIcon icon={faArrowRightFromBracket} size='xl'/>
                         <a href="#"
                         className="text-2xl font-bold "
                         onClick={handleLogout}>Log Out</a>

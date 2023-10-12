@@ -29,15 +29,15 @@ const Homepage = () => {
           </div>
 
          <div className='grid grid-cols-2 p-4 rounded-xl gap-7 mx-4 mt-8
-          shadow-[0px_2px_4px_1px_rgba(8,8,8,0.85)]'>
+          shadow-[0px_1px_3px_1px_rgba(8,8,8,0.85)]'>
 
-          <div className='w-40 rounded-xl h-24 bg-gray-200 flex items-center p-4 text-lg font-semibold gap-4'><FontAwesomeIcon icon={faCreditCard} size="xl" /> <p>Create Virtual Card</p></div>
+          <div className='w-40 rounded-xl h-24 bg-gray-200 flex items-center p-4 text-xl  gap-4'><FontAwesomeIcon icon={faCreditCard} size="xl" /> <p>Create Virtual Card</p></div>
 
-          <div className='w-40 rounded-xl h-24 bg-gray-200 flex items-center p-4 text-lg font-semibold gap-4'><FontAwesomeIcon icon={faCreditCard} size="xl" style={{color: "#1554c1",}} /> <p>Create Physical Card</p></div>
+          <div className='w-40 rounded-xl h-24 bg-gray-200 flex items-center p-4 text-xl  gap-4'><FontAwesomeIcon icon={faCreditCard} size="xl" style={{color: "#1554c1",}} /> <p>Create Physical Card</p></div>
 
-          <div className='w-40 rounded-xl h-24 bg-gray-200 flex items-center p-4 text-lg font-semibold gap-4'><FontAwesomeIcon icon={faPaperPlane} size='xl'/> <p>Send Money</p></div>
+          <div className='w-40 rounded-xl h-24 bg-gray-200 flex items-center p-4 text-xl  gap-4'><FontAwesomeIcon icon={faPaperPlane} size='xl'/> <p>Send Money</p></div>
 
-          <div className='w-40 rounded-xl h-24 bg-gray-200 flex items-center p-4 text-lg font-semibold gap-4'><FontAwesomeIcon icon={faMoneyBill1Wave} size="xl" /> <p>Receive Money</p></div>
+          <div className='w-40 rounded-xl h-24 bg-gray-200 flex items-center p-4 text-xl  gap-4'><FontAwesomeIcon icon={faMoneyBill1Wave} size="xl" /> <p>Receive Money</p></div>
 
          </div>
 
