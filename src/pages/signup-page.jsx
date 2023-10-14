@@ -20,7 +20,7 @@ const handleSubmit = async (e) => {
   try{
       await createUser(email, password);
 
-      navigate('/dashboard');
+      navigate('/signin');
 
       toast("Account creation successful. LOGIN");
       

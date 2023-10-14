@@ -1,4 +1,5 @@
 import React from 'react'
+import { useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Logo from "../images/KNS-LOGO-PNG.png"
 import { useState } from 'react'
@@ -11,14 +12,26 @@ const [error, setError] = useState('')
 const navigate = useNavigate()
 
 const  { login } = UserAuth();
+useEffect(() => {
+  // Check if the user has registered in local storage
+  const hasRegistered = localStorage.getItem('hasRegistered');
 
+  // If the user has registered, navigate to the dashboard
+}, []);
 const handleSubmit = async (e) => {
   e.preventDefault();
   setError('')
   try {
       await login(email, password)
-      navigate('/dashboard')
 
+     
+     
+      const hasRegistered = localStorage.getItem('hasRegistered');
+      if (hasRegistered === 'true') {
+        navigate('/dashboard');
+      } else {
+        navigate('/profile-form');
+      }
   } catch (e) {
     setError(e.message)
     console.log(e.message)
@@ -34,7 +47,7 @@ const handleSubmit = async (e) => {
             <form 
             onSubmit={handleSubmit}
             className='w-[90%] rounded-lg bg-gray-200 mx-auto'>
-                <p className='text-3xl font-semibold text-center'>Sign in</p>
+                <p className='text-3xl font-semibold text-center'>Sign In</p>
                 <p className='text-lg text-center'>Log into your account.</p>
             <div className='flex flex-col  w-[90%] mx-auto'>            
 
