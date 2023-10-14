@@ -23,7 +23,7 @@ const Homepage = () => {
                   <p className='text-4xl font-semibold'>Balance</p>
                   <div className='flex gap-2 items-center font-semibold bg-blue-200 h-fit py-1 px-2 border-2 rounded-3xl'> <FontAwesomeIcon icon={faRepeat} /> <p className='text-xl '>Naira</p></div>
                   </div>
-                  <div className='bg-white rounded-xl h-16 w-fit px-6 text-2xl font-semibold mt-8 ml-4 flex items-center'>$ 10,500.00</div>
+                  <div className='bg-white rounded-xl h-16 w-fit px-6 text-2xl font-semibold mt-8 ml-4 flex items-center'>$ 00,000.00</div>
             </div>
 
           </div>

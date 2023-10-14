@@ -1,9 +1,9 @@
 import React from 'react'
-import { useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Logo from "../images/KNS-LOGO-PNG.png"
 import { useState } from 'react'
 import { UserAuth } from '../context/AuthContext';
+import ProfileForm from './profile-form';
 
 export default function Login() {
 const [email, setEmail] = useState('');
@@ -12,26 +12,15 @@ const [error, setError] = useState('')
 const navigate = useNavigate()
 
 const  { login } = UserAuth();
-useEffect(() => {
-  // Check if the user has registered in local storage
-  const hasRegistered = localStorage.getItem('hasRegistered');
 
-  // If the user has registered, navigate to the dashboard
-}, []);
 const handleSubmit = async (e) => {
   e.preventDefault();
   setError('')
   try {
       await login(email, password)
+      
+      navigate('/dashboard')
 
-     
-     
-      const hasRegistered = localStorage.getItem('hasRegistered');
-      if (hasRegistered === 'true') {
-        navigate('/dashboard');
-      } else {
-        navigate('/profile-form');
-      }
   } catch (e) {
     setError(e.message)
     console.log(e.message)

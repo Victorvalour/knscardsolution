@@ -46,6 +46,7 @@ const ProfileForm = () => {
     const [state, setState] = useState('');
     const [postalCode, setPostalCode] = useState('');
     const [country, setCountry] = useState('');
+    const [userId, setUserId] = useState('');
 
     const billingAddress = {
       "line1" : line1,
@@ -87,18 +88,25 @@ const ProfileForm = () => {
        fetch('https://api.sandbox.sudo.cards/customers', {
         method: 'POST',
         headers: { "content-Type": "application/json", 
-        Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NGNjZWYwOTRhNzU0YTY1YTM3MGQ0YWUiLCJlbWFpbEFkZHJlc3MiOiJ5b3VuZ3N0aW1keUB5YWhvby5jb20iLCJqdGkiOiI2NTIxZTVhM2RjMjYzYmVlZmMwNDBhY2UiLCJtZW1iZXJzaGlwIjp7Il9pZCI6IjY0ZjFkOGQ3YWVkOTFmOTMwMmNhZDdmYyIsImJ1c2luZXNzIjp7Il9pZCI6IjY0ZjFkOGQ3YWVkOTFmOTMwMmNhZDdmOSIsIm5hbWUiOiJLTlMgQ0FSRCBTT0xVVElPTiBMVEQiLCJpc0FwcHJvdmVkIjp0cnVlfSwidXNlciI6IjY0Y2NlZjA5NGE3NTRhNjVhMzcwZDRhZSIsInJvbGUiOiJBUElLZXkifSwiaWF0IjoxNjk2NzIwMjkxLCJleHAiOjE3MjgyNzc4OTF9.zmOxRVslrKV6_3TbiLCHLV4baDKvAb5exzDryePxt-s'},
+        Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NGNjZWYwOTRhNzU0YTY1YTM3MGQ0YWUiLCJlbWFpbEFkZHJlc3MiOiJ5b3VuZ3N0aW1keUB5YWhvby5jb20iLCJqdGkiOiI2NTJhOWNjYWJmY2NiOGQ2OTA2ZTFlZGUiLCJtZW1iZXJzaGlwIjp7Il9pZCI6IjY0ZjFkOGQ3YWVkOTFmOTMwMmNhZDdmYyIsImJ1c2luZXNzIjp7Il9pZCI6IjY0ZjFkOGQ3YWVkOTFmOTMwMmNhZDdmOSIsIm5hbWUiOiJLTlMgQ0FSRCBTT0xVVElPTiBMVEQiLCJpc0FwcHJvdmVkIjp0cnVlfSwidXNlciI6IjY0Y2NlZjA5NGE3NTRhNjVhMzcwZDRhZSIsInJvbGUiOiJBUElLZXkifSwiaWF0IjoxNjk3MjkxNDY2LCJleHAiOjE3Mjg4NDkwNjZ9.6dDwuzw6T3YmvbvrpnFFDRAqa1vpYd5Bbn2ySadVkU8'},
         body: JSON.stringify(userData)
     }
        ).then(response => response.json()).then((response) => {
         console.log(response)
-        setHasRegistered(true)
+
         console.log("data has been added")
 
-        if (hasRegistered === true) {
+        if (response.statusCode === 200) {
+          setHasRegistered(true)
+        }
+        navigate('/dashboard')
+
+        setUserId(response.data._id)
+        console.log(userId)
+       /* if (hasRegistered === true) {
           navigate('/dashboard')
         }
-        localStorage.setItem('hasRegistered', 'true');
+*/
        }).catch((err) => {console.log(err.message)})
       }
         

@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCreditCard, faHouse, faGear, faUser } from '@fortawesome/free-solid-svg-icons';
 
@@ -10,7 +11,10 @@ const BottomNav = () => {
 <FontAwesomeIcon icon={faHouse} style={{color: "#23334d"}} size='2x'/>
 <FontAwesomeIcon icon={faCreditCard} style={{color: "#58719d"}} size='2x' />
 <FontAwesomeIcon icon={faGear}  style={{color: "#58719d"}} size='2x'/>
+
+<Link to='/profile-form' >
 <FontAwesomeIcon icon={faUser} style={{color: "#58719d"}} size='2x'/>
+</Link>
     </div>
   )
 }
