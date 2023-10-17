@@ -7,6 +7,7 @@ import { faRepeat, faPaperPlane, faCreditCard, faMoneyBill1Wave } from '@fortawe
 const Homepage = () => {
 
   const { user, logout} = UserAuth()
+  console.log(user)
   return (
     <div className='flex flex-col '>
        

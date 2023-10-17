@@ -1,10 +1,21 @@
-import React, { useState } from 'react'
+import React, { createContext, useState } from 'react'
 import Logo from "../images/KNS-LOGO-PNG.png"
 import Select from 'react-dropdown-select'
 import { useNavigate } from 'react-router-dom'
+import Login from './login-page'
+import { UserAuth } from '../context/AuthContext'
+import App from '../App'
+import { UserId } from '../context/Context'
 
 
-const ProfileForm = () => {
+
+
+const ProfileForm = ({children}) => {
+  const { addSudoId } = UserId()
+ // console.log(user)
+
+
+
     const accountTypes = [
       {label: 'individual', value: 1},
       {label: 'company', value: 2}
@@ -46,7 +57,7 @@ const ProfileForm = () => {
     const [state, setState] = useState('');
     const [postalCode, setPostalCode] = useState('');
     const [country, setCountry] = useState('');
-    const [userId, setUserId] = useState('');
+    const [sudoUid, setSudoUid] = useState('');
 
     const billingAddress = {
       "line1" : line1,
@@ -75,15 +86,30 @@ const ProfileForm = () => {
     const handleIdType = (values) => {
       setIdType(values[0].label)
       console.log(values[0].label)
-
     }
+    const handleFirstName = (e) => {
+      setFirstName(e.target.value)
+    }
+    const handleLastName = (e) => {
+      setLastName(e.target.value)
+    }
+
+     
+  
+
+  
+  
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        const userData = {type, name, status, individual, billingAddress}
+        const fullName = firstName + ' ' + lastName;
+        setFullName(fullName);
+
+        const userData = {type, name: fullName, status, individual, billingAddress}
 
       console.log(userData)
 
+    
 
        fetch('https://api.sandbox.sudo.cards/customers', {
         method: 'POST',
@@ -91,22 +117,25 @@ const ProfileForm = () => {
         Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NGNjZWYwOTRhNzU0YTY1YTM3MGQ0YWUiLCJlbWFpbEFkZHJlc3MiOiJ5b3VuZ3N0aW1keUB5YWhvby5jb20iLCJqdGkiOiI2NTJhOWNjYWJmY2NiOGQ2OTA2ZTFlZGUiLCJtZW1iZXJzaGlwIjp7Il9pZCI6IjY0ZjFkOGQ3YWVkOTFmOTMwMmNhZDdmYyIsImJ1c2luZXNzIjp7Il9pZCI6IjY0ZjFkOGQ3YWVkOTFmOTMwMmNhZDdmOSIsIm5hbWUiOiJLTlMgQ0FSRCBTT0xVVElPTiBMVEQiLCJpc0FwcHJvdmVkIjp0cnVlfSwidXNlciI6IjY0Y2NlZjA5NGE3NTRhNjVhMzcwZDRhZSIsInJvbGUiOiJBUElLZXkifSwiaWF0IjoxNjk3MjkxNDY2LCJleHAiOjE3Mjg4NDkwNjZ9.6dDwuzw6T3YmvbvrpnFFDRAqa1vpYd5Bbn2ySadVkU8'},
         body: JSON.stringify(userData)
     }
-       ).then(response => response.json()).then((response) => {
+       ).then((response) => response.json()).then((response) => {
         console.log(response)
 
         console.log("data has been added")
 
-        if (response.statusCode === 200) {
+      //  if (response.statusCode === 200) {}
           setHasRegistered(true)
-        }
-        navigate('/dashboard')
+       
+        
 
-        setUserId(response.data._id)
-        console.log(userId)
-       /* if (hasRegistered === true) {
-          navigate('/dashboard')
-        }
-*/
+     //   navigate('/dashboard')
+
+     setSudoUid(response.data._id);
+        
+      addSudoId(sudoUid)
+      console.log(sudoUid)
+
+
+          
        }).catch((err) => {console.log(err.message)})
       }
         
@@ -143,11 +172,13 @@ const ProfileForm = () => {
 
                               </Select>
 
-                  <label htmlFor="">Full name (as shown in your document)</label>
+            {/*      <label htmlFor="">Full name (as shown in your document)</label>
                 <input type="name"
                  placeholder='Enter your Full Name'
                  onChange={e => setFullName(e.target.value)}
                 className='pl-2 h-12 rounded-md text-lg mb-2' />
+
+  */}
 
                   <label htmlFor="">Phone number (in international format)</label>
                     <input type="text"
@@ -167,16 +198,16 @@ const ProfileForm = () => {
                   <label htmlFor="">First name</label>
                 <input type="text"
                  placeholder='First Name'
-                 onChange={e => setFirstName(e.target.value)}
+                 onChange={handleFirstName}
                 className='pl-2 h-12 rounded-md text-lg my-2' />
 
                   <label htmlFor="">Last Name</label>
                 <input type="text" 
                 placeholder='Last Name'
-                onChange={e => setLastName(e.target.value)}
+                onChange={handleLastName}
                 className='pl-2 h-12 rounded-md text-lg my-2' />
 
-              <label htmlFor="">Date of Birth</label>
+        {  /*    <label htmlFor="">Date of Birth</label>
                 <input type="text" 
                 placeholder='YYYY/MM/DD'
                 onChange={e => setDateOfBirth(e.target.value)}
@@ -196,7 +227,7 @@ options={identificationTypes}>
                 <input type="text" 
                 placeholder='Enter ID number'
                 onChange={e => setIdNumber(e.target.value)}
-                className='pl-2 h-12 rounded-md text-lg my-2' />
+className='pl-2 h-12 rounded-md text-lg my-2' /> */}
 
                 <p className='text-2xl py-4'>Address Informaion</p>
 
@@ -240,10 +271,9 @@ options={identificationTypes}>
                
           
             </form>
-     
 
     </div>
   )
 }
+export default ProfileForm;
 
-export default ProfileForm

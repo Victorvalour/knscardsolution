@@ -8,18 +8,24 @@ import Homepage from './pages/homepage'
 import { AuthContextProvider } from './context/AuthContext'
 import ProtectedRoute from './components/ProtectedRoute'
 import ProfileForm from './pages/profile-form'
+import IdContextProvider from './context/Context'
 
 
 export default function App() {
 
+  
 
   return (
     <div>
       <AuthContextProvider>
+     <IdContextProvider>
     <Routes>
       <Route path='/' element={<Landing />}/>
       <Route path='/signup' element={<SignUP />} />
+      
+     
       <Route path='/signin' element={<Login />} />
+      
 
       <Route path='/profile-form' element={<ProfileForm />} />
 
@@ -31,6 +37,7 @@ export default function App() {
       </ProtectedRoute>
       } />
     </Routes>
+    </IdContextProvider>
     </AuthContextProvider>
   
     </div>

@@ -1,9 +1,12 @@
 import React from 'react'
 import { Link, useNavigate } from 'react-router-dom';
 import Logo from "../images/KNS-LOGO-PNG.png"
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 import { UserAuth } from '../context/AuthContext';
-import ProfileForm from './profile-form';
+import { UserId } from '../context/Context';
+
+
+
 
 export default function Login() {
 const [email, setEmail] = useState('');
@@ -13,13 +16,19 @@ const navigate = useNavigate()
 
 const  { login } = UserAuth();
 
+const  { getUserData } = UserId()
+
+const { user } = UserAuth();
+
 const handleSubmit = async (e) => {
   e.preventDefault();
   setError('')
   try {
       await login(email, password)
+  console.log(user.uid)
+      getUserData()
       
-      navigate('/dashboard')
+     
 
   } catch (e) {
     setError(e.message)
@@ -71,5 +80,7 @@ const handleSubmit = async (e) => {
         </div>
     </div>
   )
+
+  return children
 }
 
