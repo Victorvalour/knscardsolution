@@ -1,23 +1,31 @@
 import React from 'react'
+import { useState } from 'react'
 import DashboardSidebar from '../components/dashboard-sidebar'
 import {UserAuth} from '../context/AuthContext'
 import BottomNav from '../components/bottom-nav'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faRepeat, faPaperPlane, faCreditCard, faMoneyBill1Wave } from '@fortawesome/free-solid-svg-icons'
+import { UserId } from '../context/Context';
 const Homepage = () => {
 
-  const { user, logout} = UserAuth()
+  const { user, getSudoUser, firstName, sudoId} = UserAuth()
+  const {  } = UserId()
+  
+
+  getSudoUser()
+  
   console.log(user)
   return (
     <div className='flex flex-col '>
-       
+      
           <DashboardSidebar />
-
+         
           <div>
             <p className='text-xl font-semibold pl-5'>
-              Welcome, {user && user.email}
+              Welcome, {user && firstName}
             </p>
             </div>
+              
           <div className='px-4'>
             <div className='w-full  rounded-xl h-52 bg-blue-200 self-center mt-5 p-4'>
                 <div className='flex w-full h-fit items-center justify-between'>
@@ -43,7 +51,7 @@ const Homepage = () => {
          </div>
 
           <BottomNav />
-     
+        
     </div>
   )
 }

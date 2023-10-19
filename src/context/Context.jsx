@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useState, useEffect } from "react";
 import { addDoc, collection,  doc, setDoc, getDoc } from "firebase/firestore";
 import Login from "../pages/login-page";
 import App from "../App";
@@ -13,11 +13,11 @@ import { useNavigate } from "react-router-dom";
  const IdContextProvider = ({children}) => {
   
     //const sudoId = useContext(IdContext)
-    const {user} = UserAuth();
+    const {user, sudoId} = UserAuth();
     console.log(user)
     
-    const [sudoId, setSudoId] = useState('')
-
+   // const [sudoId, setSudoId] = useState('')
+    const [firstName, setFirstName] = useState('')
     const userMe = 'Vicck';
     const navigate = useNavigate()
   
@@ -51,9 +51,10 @@ if (docSnap) {
 }
   } */
 
+
       
     return (
-      <IdContext.Provider value={{userMe, addSudoId, sudoId}}>
+      <IdContext.Provider value={{userMe, addSudoId, sudoId, firstName}}>
        {children}
         </IdContext.Provider>
     );

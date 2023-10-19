@@ -6,13 +6,15 @@ import { UserAuth } from '../context/AuthContext';
 const Profile = () => {
 
 const { sudoId } = UserAuth()
-
+console.log(sudoId)
 const { user } = UserAuth()
 
 
 const [userData, setUserData] = useState({})
 const [isPending, setIsPending] = useState(true)
 const [firstName, setFirstName] = useState('')
+const [emailAddress, setEmailAddress] = useState('')
+const [phoneNumber, setPhoneNumber] = useState()
 const [lastName, setLastName] = useState('')
 const [line1, setLine1] = useState('')
 
@@ -37,13 +39,14 @@ const options = {
         setFirstName(response.data.individual.firstName)
         setLastName(response.data.individual.lastName)
         setLine1(response.data.billingAddress.line1)
+        setEmailAddress(response.data.emailAddress)
+        setPhoneNumber(response.data.phoneNumber)
     })
     .catch(err => console.error(err));
     setIsPending(false)
 }, [])
 
-    console.log(sudoId)
-    console.log(userData)
+
 
   return (
     <div>
