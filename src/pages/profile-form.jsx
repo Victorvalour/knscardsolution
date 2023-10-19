@@ -1,4 +1,4 @@
-import React, { createContext, useState } from 'react'
+import React, { createContext, useEffect, useState } from 'react'
 import Logo from "../images/KNS-LOGO-PNG.png"
 import Select from 'react-dropdown-select'
 import { useNavigate } from 'react-router-dom'
@@ -12,8 +12,11 @@ import { UserId } from '../context/Context'
 
 const ProfileForm = ({children}) => {
   const { addSudoId } = UserId()
- // console.log(user)
+  const { user } = UserAuth()
+  console.log(user)
+  const userUid = user.uid
 
+  const { updateUser } = UserAuth()
 
 
     const accountTypes = [
@@ -105,7 +108,7 @@ const ProfileForm = ({children}) => {
         const fullName = firstName + ' ' + lastName;
         setFullName(fullName);
 
-        const userData = {type, name: fullName, status, individual, billingAddress}
+       const userData = {type, name: fullName, status, individual, billingAddress, phoneNumber, emailAddress}
 
       console.log(userData)
 
@@ -122,24 +125,24 @@ const ProfileForm = ({children}) => {
 
         console.log("data has been added")
 
-      //  if (response.statusCode === 200) {}
-          setHasRegistered(true)
-       
-        
 
-     //   navigate('/dashboard')
-
+        const sudoId = {"sudoUid" : response.data._id}
+  
+       navigate('/dashboard')
+    
      setSudoUid(response.data._id);
-        
-      addSudoId(sudoUid)
-      console.log(sudoUid)
 
 
-          
+     addSudoId(sudoId)
+     console.log(response.data._id)
+    
+  updateUser(user)
+      
+      
        }).catch((err) => {console.log(err.message)})
       }
         
-      
+
 
   return (
     <div className='py-2 px-2'>

@@ -12,7 +12,7 @@ const BottomNav = () => {
 <FontAwesomeIcon icon={faCreditCard} style={{color: "#58719d"}} size='2x' />
 <FontAwesomeIcon icon={faGear}  style={{color: "#58719d"}} size='2x'/>
 
-<Link to='/profile-form' >
+<Link to='/profile' >
 <FontAwesomeIcon icon={faUser} style={{color: "#58719d"}} size='2x'/>
 </Link>
     </div>

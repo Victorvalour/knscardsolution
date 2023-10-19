@@ -14,6 +14,9 @@ import { useNavigate } from "react-router-dom";
   
     //const sudoId = useContext(IdContext)
     const {user} = UserAuth();
+    console.log(user)
+    
+    const [sudoId, setSudoId] = useState('')
 
     const userMe = 'Vicck';
     const navigate = useNavigate()
@@ -26,17 +29,19 @@ import { useNavigate } from "react-router-dom";
 
   userId: `${user.uid}`})
   */
-
-  const ref = doc(db, "userInfo", user.uid)
+ const userUid = user.uid
+console.log(userUid)
+  const ref = doc(db, "userInfo", userUid)
   const docRef = setDoc(ref, sudoUid)
   
   }
 
-  const getUserData = () => {
+  /* const getUserData = () => {
     const docRef = doc(db, "userInfo", user.uid);
 const docSnap = getDoc(docRef);
 if (docSnap) {
   console.log(docSnap);
+  setSudoId(docRef)
   navigate('/dashboard')
   
 } else {
@@ -44,11 +49,11 @@ if (docSnap) {
   console.log("No such document!");
   navigate('/profile-form')
 }
-  }
+  } */
 
       
     return (
-      <IdContext.Provider value={{userMe, addSudoId, getUserData}}>
+      <IdContext.Provider value={{userMe, addSudoId, sudoId}}>
        {children}
         </IdContext.Provider>
     );

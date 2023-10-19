@@ -9,6 +9,7 @@ import { AuthContextProvider } from './context/AuthContext'
 import ProtectedRoute from './components/ProtectedRoute'
 import ProfileForm from './pages/profile-form'
 import IdContextProvider from './context/Context'
+import Profile from './pages/profile-page'
 
 
 export default function App() {
@@ -28,6 +29,7 @@ export default function App() {
       
 
       <Route path='/profile-form' element={<ProfileForm />} />
+      <Route path='/profile' element={<Profile />} />
 
       <Route path='/dashboard' element={
        <ProtectedRoute> 

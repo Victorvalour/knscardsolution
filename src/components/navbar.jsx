@@ -52,35 +52,35 @@ initial="closed"
 animate="open"
 exit="closed"
 
-className="fixed right-0 top-20 shadow-[10px_10px_10px_0px_rgba(0,0,0,0.8)] bg-cobalt w-full">
+className="fixed h-[60vh] right-0 shadow-[5px_5px_10px_0px_rgba(0,0,0,0.8)] top-[8vh] bg-white w-[80vw] rounded-2xl flex flex-col pt-16 pb-6 text-center  justify-between">
             <div>
                 <ul className="flex flex-col text-center my-10 space-y-12">
                     <li key="1"
                     className="border-b-2">
                         <a href="#"
-                        className="text-2xl font-bold text-white">Home</a>
+                        className="text-2xl font-bold ">Home</a>
                     </li>
                     <li  key="2"
                     className="border-b-2">
                         <a href="#"
-                        className="text-2xl font-bold text-white ">About</a>
+                        className="text-2xl font-bold  ">About</a>
                     </li>
                     <li  key="3"
                     className="border-b-2">
                         <a href="#"
-                        className="text-2xl font-bold text-white">Contact Us</a>
+                        className="text-2xl font-bold ">Contact Us</a>
                     </li>
                 <Link to='/signup'>
                     <li  key="4"
                     className="">
                         <a href="#"
-                        className="text-2xl font-bold border-b-2 text-white">Create a free account</a>
+                        className="text-2xl font-bold border-b-2 ">Create a free account</a>
                     </li>
                     </Link>
 
                     <Link to='/signin'>
                     <li  key="5"
-                    className="text-2xl font-bold text-white">
+                    className="text-2xl font-bold ">
                        Sign In
                     </li>
                     </Link>

@@ -16,7 +16,6 @@ const navigate = useNavigate()
 
 const  { login } = UserAuth();
 
-const  { getUserData } = UserId()
 
 const { user } = UserAuth();
 
@@ -25,9 +24,9 @@ const handleSubmit = async (e) => {
   setError('')
   try {
       await login(email, password)
-  console.log(user.uid)
-      getUserData()
-      
+    
+      //getUserData();
+  
      
 
   } catch (e) {

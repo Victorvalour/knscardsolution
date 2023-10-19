@@ -35,9 +35,9 @@ const handleSubmit = async (e) => {
   return (
     <div className='bg-cobalt h-[100vh] pt-16 pb-10'>
         <div className='h-full'>
-          <div className="flex items-center bg-white w-[80%] mx-auto rounded-xl py-2 px-3 mb-8 border-black border-4">
+          <div className="flex items-center bg-white w-[80%] mx-auto rounded-xl py-2 px-3 mb-8 border-black border-4 text-center">
              <img src={Logo} alt="" className="w-20 h-16 p-0" />
-             <h2 className="font-gothic"><span className="text-cobalt text-lg">KNS</span><span className="text-orange-500">CARD</span>SOLUTION</h2>
+             <h2 className="font-gothic text-center"><span className="text-cobalt text-lg">KNS</span><span className="text-orange-500">CARD</span>SOLUTION</h2>
           </div> 
             <form onSubmit={handleSubmit}
             className='w-[90%] rounded-lg bg-gray-200 mx-auto'>
