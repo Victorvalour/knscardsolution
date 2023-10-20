@@ -19,7 +19,7 @@ const [lastName, setLastName] = useState('')
 const [line1, setLine1] = useState('')
 
 const userId = user.uid
-const userSudoId = sudoId.sudoUid
+const userSudoId = localStorage.getItem('userSudoId');
 const options = {
     method: 'GET',
     headers: {

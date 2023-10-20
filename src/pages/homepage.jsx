@@ -8,11 +8,11 @@ import { faRepeat, faPaperPlane, faCreditCard, faMoneyBill1Wave } from '@fortawe
 import { UserId } from '../context/Context';
 const Homepage = () => {
 
-  const { user, getSudoUser, firstName, sudoId} = UserAuth()
+  const { user, firstName, sudoId} = UserAuth()
   const {  } = UserId()
   
 
-  getSudoUser()
+ // getSudoUser()
   
   console.log(user)
   return (
