@@ -4,7 +4,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import userIMG from '../images/user.svg'
 import { UserAuth } from '../context/AuthContext'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBell, faCreditCard, faHouse, faFileInvoice, faWallet, faArrowRightFromBracket } from '@fortawesome/free-solid-svg-icons';
+import { faBell, faCreditCard, faHouse, faFileInvoice, faWallet, faArrowRightFromBracket, faUserCheck } from '@fortawesome/free-solid-svg-icons';
 
 const DashboardSidebar = () => {
     const { user, logout} = UserAuth()
@@ -67,7 +67,7 @@ initial="closed"
 animate="open"
 exit="closed"
 
-className="fixed h-[60vh]  shadow-[5px_5px_10px_0px_rgba(0,0,0,0.8)] top-[8vh] bg-white w-[80vw] rounded-2xl flex flex-col pt-16 pb-6 text-center  justify-between">
+className="fixed h-[60vh]  shadow-[10px_90px_42px_200px_rgba(0,0,0,0.49)] top-[8vh] bg-white w-[80vw] rounded-2xl flex flex-col pt-16 pb-6 text-center  justify-between">
            
                <div className='flex flex-col space-y-12'>
              
@@ -75,25 +75,31 @@ className="fixed h-[60vh]  shadow-[5px_5px_10px_0px_rgba(0,0,0,0.8)] top-[8vh] b
                     className="border-b-2 flex ml-[20%] gap-5 items-center">
                         <FontAwesomeIcon size='xl' icon={faHouse} />
                         <a href="#"
-                        className="text-2xl font-bold">Home</a>
+                        className="text-xl font-bold">Home</a>
                     </div>
-                    <div  key="2"
+                    <div  
                     className="border-b-2 flex ml-[20%] gap-5 items-center">
                         <FontAwesomeIcon size='xl' icon={faCreditCard} />
                         <a href="#"
-                        className="text-2xl ">My cards</a>
+                        className="text-xl ">My cards</a>
                     </div>
-                    <div  key="3"
+                    <div  
                     className="border-b-2 flex ml-[20%] gap-5 items-center">
                         <FontAwesomeIcon size='xl' icon={faFileInvoice} />
                         <a href="#"
-                        className="text-2xl">Transactions</a>
+                        className="text-xl">Transactions</a>
                     </div>
-                    <div  key="3"
+                    <div  
                     className="border-b-2 flex ml-[20%] gap-5 items-center">
                         <FontAwesomeIcon size='xl' icon={faWallet} />
                         <a href="#"
-                        className="text-2xl">Accounts</a>
+                        className="text-xl">Accounts</a>
+                    </div>
+                    <div  key="3"
+                    className="border-b-2 flex ml-[20%] gap-5 items-center">
+                        <FontAwesomeIcon size='xl' icon={faUserCheck} />
+                        <a href="#"
+                        className="text-xl">Kyc verification</a>
                     </div>
                     </div>
 

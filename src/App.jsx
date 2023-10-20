@@ -10,6 +10,7 @@ import ProtectedRoute from './components/ProtectedRoute'
 import ProfileForm from './pages/profile-form'
 import IdContextProvider from './context/Context'
 import Profile from './pages/profile-page'
+import KycForm from './pages/kyc-form-page'
 
 
 export default function App() {
@@ -27,17 +28,16 @@ export default function App() {
      
       <Route path='/signin' element={<Login />} />
       
+      <Route path='/profile-form' element={ <ProtectedRoute> <ProfileForm />   </ProtectedRoute>} />
 
-      <Route path='/profile-form' element={<ProfileForm />} />
-      <Route path='/profile' element={<Profile />} />
+      <Route path='/profile' element={ <ProtectedRoute> <Profile/> </ProtectedRoute>} />
 
       <Route path='/dashboard' element={
        <ProtectedRoute> 
-
-
       <Homepage />
       </ProtectedRoute>
       } />
+      <Route path='/kyc-form' element={ <ProtectedRoute> <KycForm />   </ProtectedRoute>} />
     </Routes>
     </IdContextProvider>
     </AuthContextProvider>
