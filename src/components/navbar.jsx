@@ -52,7 +52,7 @@ initial="closed"
 animate="open"
 exit="closed"
 
-className="fixed h-[60vh] right-0 shadow-[5px_5px_10px_0px_rgba(0,0,0,0.8)] top-[8vh] bg-white w-[80vw] rounded-2xl flex flex-col pt-16 pb-6 text-center  justify-between">
+className="fixed  right-0 shadow-[5px_5px_10px_0px_rgba(0,0,0,0.8)] top-[8vh] bg-white w-[80vw] rounded-2xl flex flex-col pt-16 pb-6 text-center  justify-between">
             <div>
                 <ul className="flex flex-col text-center my-10 space-y-12">
                     <li key="1"
@@ -73,8 +73,8 @@ className="fixed h-[60vh] right-0 shadow-[5px_5px_10px_0px_rgba(0,0,0,0.8)] top-
                 <Link to='/signup'>
                     <li  key="4"
                     className="">
-                        <a href="#"
-                        className="text-2xl font-bold border-b-2 ">Create a free account</a>
+                        <div
+                        className="text-2xl font-bold border-b-2 ">Create a free account</div>
                     </li>
                     </Link>
 

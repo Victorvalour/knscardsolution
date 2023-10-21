@@ -12,6 +12,7 @@ import { addDoc, collection,  doc, setDoc, getDoc } from "firebase/firestore";
 import { UserId } from "./Context";
 import { db } from "../firebase";
 import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
 
 
 const UserContext = createContext();
@@ -79,11 +80,23 @@ const userUid = userCred.user.uid
               localStorage.setItem('firstName', response.data.individual.firstName);
               setFirstName(response.data.individual.firstName)
            
-          .catch(err => console.error(err));
+          .catch((err) => {console.error(err)
+        
+          });
           setIsPending(false)}
           )
       
       navigate('/dashboard')
+      toast.success('Login Successful', {
+        position: "top-center",
+        autoClose: 4000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        });
       
     } else {
       // docSnap.data() will be undefined in this case
@@ -93,7 +106,20 @@ const userUid = userCred.user.uid
 
    }
   
-   )
+   ).catch((error) => {
+    console.log(error);
+    toast.error('Error! Check your Login credentials', {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        });
+
+})
 
   }
 
@@ -125,7 +151,9 @@ useEffect(() => {
 }, [])
 
   return (
-    <UserContext.Provider value={{createUser, user, logout, login, updateUser, sudoId, firstName}}>{children}</UserContext.Provider>
+    <UserContext.Provider value={{createUser, user, logout, login, updateUser, sudoId, firstName}}>{children}
+            <ToastContainer />
+    </UserContext.Provider>
   );
 };
 export const UserAuth = () => {

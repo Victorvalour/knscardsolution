@@ -4,6 +4,7 @@ import Logo from "../images/KNS-LOGO-PNG.png"
 import { useState, useContext } from 'react'
 import { UserAuth } from '../context/AuthContext';
 import { UserId } from '../context/Context';
+import { ToastContainer, toast } from "react-toastify";
 
 
 
@@ -32,15 +33,19 @@ const handleSubmit = async (e) => {
   } catch (e) {
     setError(e.message)
     console.log(e.message)
+ 
   }
 }
   return (
     <div className='bg-cobalt h-[100vh] pt-16'>
         <div className=''>
           <div className="flex items-center bg-white w-[80%] mx-auto rounded-xl py-2 px-3 mb-8 border-black border-4">
+     
              <img src={Logo} alt="" className="w-20 h-16 p-0" />
-             <h2 className="font-gothic"><span className="text-cobalt text-lg">KNS</span><span className="text-orange-500">CARD</span>SOLUTION</h2>
-          </div> 
+             <div>
+             <h2 className="font-gothic w-[90px] text-lg"><span className="text-cobalt text-lg text-start">KNS</span><span className="text-orange-500">CARD</span>SOLUTION</h2> </div>
+             </div>
+      
             <form 
             onSubmit={handleSubmit}
             className='w-[90%] rounded-lg bg-gray-200 mx-auto'>
@@ -62,7 +67,7 @@ const handleSubmit = async (e) => {
                 <p className='text-end'>Forgot Password?</p>
 
                 <button 
-                className='h-16 w-64 bg-orange-500 rounded-2xl px-6 text-xl font-bold mx-auto my-4'
+                className='h-16 w-[70%s] bg-orange-500 rounded-2xl px-6 text-xl font-bold mx-auto my-4'
                 type='submit'>Sign In</button>
 
 
@@ -77,6 +82,7 @@ const handleSubmit = async (e) => {
                 
             </form>
         </div>
+        <ToastContainer />
     </div>
   )
 

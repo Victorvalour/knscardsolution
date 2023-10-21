@@ -5,15 +5,16 @@ import {UserAuth} from '../context/AuthContext'
 import BottomNav from '../components/bottom-nav'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faRepeat, faPaperPlane, faCreditCard, faMoneyBill1Wave } from '@fortawesome/free-solid-svg-icons'
-import { UserId } from '../context/Context';
 import { useNavigate } from 'react-router-dom'
+import CreateCardModal from '../components/create-card-modal'
+
 const Homepage = () => {
-
+  const [showModal, setShowModal] = useState(false)
   const { user, firstName, sudoId} = UserAuth()
-const navigate = useNavigate()
+  const navigate = useNavigate()
   const handleCreateVirtualCard = () => {
-
-    navigate('/kyc-form')
+    setShowModal(true)
+    //navigate('/kyc-form')
   }
   return (
     <div className='flex flex-col '>
@@ -50,6 +51,7 @@ const navigate = useNavigate()
 
          </div>
 
+          <CreateCardModal isVisible={showModal} onClose={() => setShowModal(false)} />
           <BottomNav />
         
     </div>
