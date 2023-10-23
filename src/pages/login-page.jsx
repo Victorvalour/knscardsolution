@@ -5,6 +5,7 @@ import { useState, useContext } from 'react'
 import { UserAuth } from '../context/AuthContext';
 import { UserId } from '../context/Context';
 import { ToastContainer, toast } from "react-toastify";
+import passwordVisibilityToggle from '../components/password-visibility-toggle';
 
 
 
@@ -14,6 +15,7 @@ const [email, setEmail] = useState('');
 const [password, setPassword] = useState('')
 const [error, setError] = useState('')
 const navigate = useNavigate()
+const [PasswordInputType, ToggleIcon] = passwordVisibilityToggle();
 
 const  { login } = UserAuth();
 
@@ -58,12 +60,16 @@ const handleSubmit = async (e) => {
                 type="email" placeholder='Email Address'
                 className='h-16 rounded-md text-xl my-2' />
 
-
+<div className='relative'>
                 <input
                 onChange={(e) => setPassword(e.target.value)}
-                type="password" placeholder='Password'
-                className='h-16 rounded-md text-xl my-2' />
-                
+                type={PasswordInputType} placeholder='Password'
+                className='h-16 rounded-md text-xl my-2 w-full' />
+                 <span className="absolute right-5 top-7 cursor-psointer">
+                  {ToggleIcon}
+                </span>
+                </div>
+
                 <p className='text-end'>Forgot Password?</p>
 
                 <button 

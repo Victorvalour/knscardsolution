@@ -4,6 +4,7 @@ import Logo from "../images/KNS-LOGO-PNG.png"
 import { UserAuth } from '../context/AuthContext'
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+import passwordVisibilityToggle from '../components/password-visibility-toggle';
 
 export default function SignUP() {
 const [email, setEmail] =useState('')
@@ -11,6 +12,8 @@ const [password, setPassword] = useState('')
 const [confirmPassword, setConfirmPassword] = useState('')
 const [passwordMessage, setPasswordMessage] = useState('')
 const [error, setError] = useState('')
+
+const [PasswordInputType, ToggleIcon] = passwordVisibilityToggle();
 
 const { createUser } = UserAuth()
 
@@ -71,14 +74,23 @@ const handleSubmit = async (e) => {
                 onChange={(e) => setEmail(e.target.value)}
                 className='h-16 rounded-md text-xl my-2' />
 
-                <input type="password" placeholder='Password'
+               <div className='relative'> <input type={PasswordInputType} placeholder='Password'
                 onChange={(e) => setPassword(e.target.value)}
-                className='h-16 rounded-md text-xl my-2' />
+                className='h-16 rounded-md text-xl my-2 w-full'/>
+                <span className="absolute right-5 top-7 cursor-pointer">
+                  {ToggleIcon}
+                </span>
+                </div>
                 <p className='text-red-600'>{passwordMessage}</p>
 
-                <input type="text" placeholder='Confirm Password'
+                <div className='relative'>
+                <input type={PasswordInputType} placeholder='Confirm Password'
                 onChange={handleConfirmPassword}
-                className='h-16 rounded-md text-xl my-2' />
+                className='h-16 rounded-md text-xl my-2 w-full'/>
+                 <span className="absolute right-5 top-7 cursor-psointer">
+                  {ToggleIcon}
+                </span>
+              </div>
 
                 <p>By click the "Create account" button, you agree to knscardsolution's <span className='text-blue-800'>terms of service.</span></p>
 
