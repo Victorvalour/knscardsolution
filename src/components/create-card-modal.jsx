@@ -7,12 +7,17 @@ import { faCcVisa } from '@fortawesome/free-brands-svg-icons';
 import mastercardSvg from '../images/mastercard-svg.svg'
 import verveSvg from '../images/verve-svg.svg'
 import visaSvg from '../images/visa-svg.svg'
+import { UserAuth } from '../context/AuthContext';
+import { ToastContainer, toast } from "react-toastify";
+import { useNavigate } from 'react-router-dom';
 
 const CreateCardModal = ({isVisible, onClose}) => {
 
+    const { sudoId } = UserAuth();
     const cardTypes = [
-        {label: 'Virtual', value: 1}
+        {label: 'virtual', value: 1}
       ]
+
 
       const currencies = [
         {label: 'NGN', value: 1}
@@ -23,9 +28,11 @@ const CreateCardModal = ({isVisible, onClose}) => {
         {label: 'Mastercard', value: 3}
       ]
 
-      const [cardType, setCardType] = useState('');
-      const [cardBrand, setCardBrand] = useState('');
-      const [currency,  setCurrency] = useState('')
+      const [type, setCardType] = useState('');
+      const [brand, setCardBrand] = useState('');
+      const [currency,  setCurrency] = useState('');
+      
+    const navigate = useNavigate();
 
     const handleCardType = (values) => {
         setCardType(values[0].label)
@@ -36,23 +43,107 @@ const CreateCardModal = ({isVisible, onClose}) => {
         console.log(values[0].label)
       }
 
-const cardData = {cardType, cardBrand}
+
 
     if (!isVisible) return null;
     const handleClose = (e) => {
         if(e.target.id === 'wrapper') {onClose()}
     }
+  
+    const customerId = sudoId.sudoUid;
+    const status = 'active';
+    const issuerCountry = 'NGN';
+    const debitAccountId = '64f23823aed91f9302cb28c4';
+    const spendingControls = {
+        allowedCategories: ['[]'],
+        blockedCategories: ['[]'],
+        channels: {atm: true, pos: true, web: true, mobile: true},
+        spendingLimits: [{interval: 'daily', amount: 100000}]
+    };
+
+    /* {
+              type: 'virtual',
+              currency: 'NGN',
+              issuerCountry: 'NGA',
+              status: 'active',
+              spendingControls: {
+                allowedCategories: ['[]'],
+                blockedCategories: ['[]'],
+                channels: {atm: true, pos: true, web: true, mobile: true},
+                spendingLimits: [{interval: 'daily', amount: 100000}]
+              },
+              sendPINSMS: false,
+              customerId: '65292416b42cd354e664aec6',
+              brand: 'Verve',
+              debitAccountId: '6533b1f57bd8e16d1ff252ba'
+            }
+            */
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+      
+
+
+        const cardData = {type, currency, issuerCountry, status, brand, spendingControls, customerId, debitAccountId}
+        
+
+        const options = {
+            method: 'POST',
+            headers: {
+              accept: 'application/json',
+              'content-type': 'application/json',
+              Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NGNjZWYwOTRhNzU0YTY1YTM3MGQ0YWUiLCJlbWFpbEFkZHJlc3MiOiJ5b3VuZ3N0aW1keUB5YWhvby5jb20iLCJqdGkiOiI2NTJhOWNjYWJmY2NiOGQ2OTA2ZTFlZGUiLCJtZW1iZXJzaGlwIjp7Il9pZCI6IjY0ZjFkOGQ3YWVkOTFmOTMwMmNhZDdmYyIsImJ1c2luZXNzIjp7Il9pZCI6IjY0ZjFkOGQ3YWVkOTFmOTMwMmNhZDdmOSIsIm5hbWUiOiJLTlMgQ0FSRCBTT0xVVElPTiBMVEQiLCJpc0FwcHJvdmVkIjp0cnVlfSwidXNlciI6IjY0Y2NlZjA5NGE3NTRhNjVhMzcwZDRhZSIsInJvbGUiOiJBUElLZXkifSwiaWF0IjoxNjk3MjkxNDY2LCJleHAiOjE3Mjg4NDkwNjZ9.6dDwuzw6T3YmvbvrpnFFDRAqa1vpYd5Bbn2ySadVkU8'
+            },
+            body: JSON.stringify(cardData)
+          };
+          
+          fetch('https://api.sandbox.sudo.cards/cards', options)
+            .then(response => response.json())
+            .then((response) => {console.log(response)
+           
+            if (response.statusCode == 200) {
+                toast.success('Card created successfully', {
+                    position: "top-center",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                    });
+
+                    navigate('/cards')
+            } else {
+                toast.error('Something went wrong!', {
+                    position: "top-center",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                    });
+            }
+            })
+            .catch((err) => {console.error(err)
+            alert('err')
+            });
+
+    }
 
   return (
     <div className='fixed inset-0 bg-black bg-opacity-25 backdrop-blur-sm flex justify-center items-center' id="wrapper" onClick={handleClose}>
         
-        <div className='w-[70%] flex flex-col'>
+        <div className='w-[80%] flex flex-col'>
             <button onClick={() => onClose()} className='text-red-500 bg-white text-2xl place-self-end w-8 rounded-lg font-semibold'>X</button>
-            <form className='bg-white p-2 py-4 rounded-lg flex flex-col'>
+            <form onSubmit={handleSubmit} 
+            className='bg-white p-2 py-4 rounded-lg flex flex-col'>
 
                 <div className='mb-3 font-semibold font-serif self-center'>Card information</div>
 
-                <div>
+                <div className='mb-2'>
                     <p className=''>Card Type</p>
             <Select 
                               className='pl-2 h-12 rounded-md text-lg mb-2 bg-white'
@@ -64,7 +155,7 @@ const cardData = {cardType, cardBrand}
                               </div>
 
 
-                              <div>
+                              <div className='mb-2'>
                     <p className=''>Choose currency</p>
             <Select 
                               className='pl-2 h-12 rounded-md text-lg mb-2 bg-white'
@@ -76,7 +167,7 @@ const cardData = {cardType, cardBrand}
                               </div>
 
 
-<div>
+<div className='mb-2'>
                               <p>Select card brand</p>
                              <div className='border-2 border-opacity-10 border-black py-2 px-2'>
                                
@@ -105,6 +196,7 @@ const cardData = {cardType, cardBrand}
             </form>
             
             </div>
+            <ToastContainer/>
 
         </div>
   )

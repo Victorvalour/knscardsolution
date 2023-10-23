@@ -11,6 +11,7 @@ import ProfileForm from './pages/profile-form'
 import IdContextProvider from './context/Context'
 import Profile from './pages/profile-page'
 import KycForm from './pages/kyc-form-page'
+import Cards from './pages/cards-page'
 
 
 export default function App() {
@@ -38,6 +39,12 @@ export default function App() {
       </ProtectedRoute>
       } />
       <Route path='/kyc-form' element={ <ProtectedRoute> <KycForm />   </ProtectedRoute>} />
+
+      <Route path='/cards' element={
+       <ProtectedRoute> 
+      <Cards />
+      </ProtectedRoute>
+      } />
     </Routes>
     </IdContextProvider>
     </AuthContextProvider>

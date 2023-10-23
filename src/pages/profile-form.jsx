@@ -6,6 +6,7 @@ import Login from './login-page'
 import { UserAuth } from '../context/AuthContext'
 import App from '../App'
 import { UserId } from '../context/Context'
+import { toast } from 'react-toastify'
 
 
 
@@ -34,6 +35,21 @@ const ProfileForm = ({children}) => {
       {label: 'CAC', value: 3},
       {label: 'TIN', value: 4}
     ]
+
+    const [errors, setErrors] = useState({
+      type: '',
+      status: '',
+      phoneNumber: '',
+      emailAddress: '',
+      firstName: '',
+      lastName: '',
+      line1: '',
+      city: '',
+      state: '',
+      postalCode: '',
+      country: ''
+      // Add error states for other compulsory fields
+    });
 
     const [type, setAccountType] = useState('');
     const [name, setFullName] = useState('');
@@ -112,9 +128,66 @@ const ProfileForm = ({children}) => {
 
       console.log(userData)
 
-    
+        let hasErrors = false;
+    const newErrors = {
+      type: '',
+      phoneNumber: '',
+      emailAddress: '',
+      firstName: '',
+      lastName: '',
+      // Add validation logic for other compulsory fields
+    };
+    if (!type) {
+      newErrors.type = 'Account type is required';
+      hasErrors = true;
+    }
+    if (!status) {
+      newErrors.status = 'Account status is required';
+      hasErrors = true;
+    }
+    if (!phoneNumber) {
+      newErrors.phoneNumber = 'Phone number is required';
+      hasErrors = true;
+    }
+    if (!emailAddress) {
+      newErrors.emailAddress = 'Email address is required';
+      hasErrors = true;
+    }
+    if (!firstName) {
+      newErrors.firstName = 'First name is required';
+      hasErrors = true;
+    }
+    if (!lastName) {
+      newErrors.lastName = 'Last name is required';
+      hasErrors = true;
+    }
+    if (!line1) {
+      newErrors.line1 = 'Street address is required';
+      hasErrors = true;
+    }
+    if (!city) {
+      newErrors.city = 'City is required';
+      hasErrors = true;
+    }
+    if (!state) {
+      newErrors.state = 'State is required';
+      hasErrors = true;
+    }
+    if (!postalCode) {
+      newErrors.postalCode = 'Postal code is required';
+      hasErrors = true;
+    }
+    if (!country) {
+      newErrors.country = 'Country is required';
+      hasErrors = true;
+    }
 
-       fetch('https://api.sandbox.sudo.cards/customers', {
+    if (hasErrors) {
+      setErrors(newErrors);
+    } else {
+      // No errors, proceed with form submission
+      // ... (your existing submit logic)
+      fetch('https://api.sandbox.sudo.cards/customers', {
         method: 'POST',
         headers: { "content-Type": "application/json", 
         Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NGNjZWYwOTRhNzU0YTY1YTM3MGQ0YWUiLCJlbWFpbEFkZHJlc3MiOiJ5b3VuZ3N0aW1keUB5YWhvby5jb20iLCJqdGkiOiI2NTJhOWNjYWJmY2NiOGQ2OTA2ZTFlZGUiLCJtZW1iZXJzaGlwIjp7Il9pZCI6IjY0ZjFkOGQ3YWVkOTFmOTMwMmNhZDdmYyIsImJ1c2luZXNzIjp7Il9pZCI6IjY0ZjFkOGQ3YWVkOTFmOTMwMmNhZDdmOSIsIm5hbWUiOiJLTlMgQ0FSRCBTT0xVVElPTiBMVEQiLCJpc0FwcHJvdmVkIjp0cnVlfSwidXNlciI6IjY0Y2NlZjA5NGE3NTRhNjVhMzcwZDRhZSIsInJvbGUiOiJBUElLZXkifSwiaWF0IjoxNjk3MjkxNDY2LCJleHAiOjE3Mjg4NDkwNjZ9.6dDwuzw6T3YmvbvrpnFFDRAqa1vpYd5Bbn2ySadVkU8'},
@@ -124,6 +197,7 @@ const ProfileForm = ({children}) => {
         console.log(response)
 
         console.log("data has been added")
+        toast('Registration complete')
 
 
         const sudoId = {"sudoUid" : response.data._id}
@@ -140,6 +214,9 @@ const ProfileForm = ({children}) => {
       
       
        }).catch((err) => {console.log(err.message)})
+    }
+
+    
       }
         
 
@@ -163,8 +240,8 @@ const ProfileForm = ({children}) => {
                               name='Account Type'
                               onChange={handleAccType}
                               options={accountTypes}>
-
                               </Select>
+                              {errors.type && <p className="text-red-500">{errors.type}</p>}
 
                               <label htmlFor="">Account Status</label>
                               <Select 
@@ -172,30 +249,25 @@ const ProfileForm = ({children}) => {
                               name='Status'
                               onChange={handleStatusChange}
                               options={statuses}>
-
                               </Select>
+                              {errors.status && <p className="text-red-500">{errors.status}</p>}
 
-            {/*      <label htmlFor="">Full name (as shown in your document)</label>
-                <input type="name"
-                 placeholder='Enter your Full Name'
-                 onChange={e => setFullName(e.target.value)}
-                className='pl-2 h-12 rounded-md text-lg mb-2' />
-
-  */}
 
                   <label htmlFor="">Phone number (in international format)</label>
                     <input type="text"
                      placeholder='Phone Number'
                      value={phoneNumber}
                      onChange={e => setPhoneNumber(e.target.value)}
-                    className='pl-2 h-12 rounded-md text-lg mb-2' /> 
+                    className='pl-2 h-12 rounded-md text-lg mb-2' />
+                    {errors.phoneNumber && <p className="text-red-500">{errors.phoneNumber}</p>}
 
 
                   <label htmlFor="">Email address</label>
-                <input type="text" 
+                <input type="email" 
                 placeholder='Email Address'
                 onChange={e => setEmailAddress(e.target.value)}
                 className='pl-2 h-12 rounded-md text-lg mb-2' />
+                   {errors.emailAddress && <p className="text-red-500">{errors.emailAddress}</p>}
 
 
                   <label htmlFor="">First name</label>
@@ -203,12 +275,14 @@ const ProfileForm = ({children}) => {
                  placeholder='First Name'
                  onChange={handleFirstName}
                 className='pl-2 h-12 rounded-md text-lg my-2' />
+                {errors.firstName && <p className="text-red-500">{errors.firstName}</p>}
 
                   <label htmlFor="">Last Name</label>
                 <input type="text" 
                 placeholder='Last Name'
                 onChange={handleLastName}
                 className='pl-2 h-12 rounded-md text-lg my-2' />
+                {errors.lastName && <p className="text-red-500">{errors.lastName}</p>}
 
         {  /*    <label htmlFor="">Date of Birth</label>
                 <input type="text" 
@@ -240,30 +314,35 @@ className='pl-2 h-12 rounded-md text-lg my-2' /> */}
                 placeholder='Enter street address'
                 onChange={e => setStreetAddress(e.target.value)}
                 className='pl-2 h-12 rounded-md text-lg my-2' />
+                 {errors.line1 && <p className="text-red-500">{errors.line1}</p>}
 
                 <label htmlFor="">City</label>
                 <input type="text" 
                 placeholder='Enter City name'
                 onChange={e => setCity(e.target.value)}
                 className='pl-2 h-12 rounded-md text-lg my-2' />
+                 {errors.city && <p className="text-red-500">{errors.city}</p>}
 
                 <label htmlFor="">State</label>
                 <input type="text" 
                 placeholder='Enter State'
                 onChange={e => setState(e.target.value)}
                 className='pl-2 h-12 rounded-md text-lg my-2' />
+                 {errors.state && <p className="text-red-500">{errors.state}</p>}
 
               <label htmlFor="">Postal code</label>
                 <input type="text" 
                 placeholder='Enter Postal code'
                 onChange={e => setPostalCode(e.target.value)}
                 className='pl-2 h-12 rounded-md text-lg my-2' />
+                 {errors.postalCode && <p className="text-red-500">{errors.postalCode}</p>}
 
               <label htmlFor="">Country</label>
                 <input type="text" 
                 placeholder='Enter Country'
                 onChange={e => setCountry(e.target.value)}
                 className='pl-2 h-12 rounded-md text-lg my-2' />
+                 {errors.country && <p className="text-red-500">{errors.country}</p>}
 
                 <button 
                 className='pl-2 h-12 w-64 bg-orange-500 rounded-2xl px-6 text-xl font-bold mx-auto my-4'

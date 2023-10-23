@@ -43,7 +43,8 @@ const Homepage = () => {
 
           <div onClick={handleCreateVirtualCard} className='w-40 rounded-xl h-24 bg-gray-200 flex items-center p-4 text-xl  gap-4 hover:bg-gray-400'><FontAwesomeIcon icon={faCreditCard} size="xl" /> <p>Create Virtual Card</p></div>
 
-          <div className='w-40 rounded-xl h-24 bg-gray-200 flex items-center p-4 text-xl  gap-4 hover:bg-gray-400'><FontAwesomeIcon icon={faCreditCard} size="xl" style={{color: "#1554c1",}} /> <p>Create Physical Card</p></div>
+          <div onClick={handleCreateVirtualCard}
+          className='w-40 rounded-xl h-24 bg-gray-200 flex items-center p-4 text-xl  gap-4 hover:bg-gray-400'><FontAwesomeIcon icon={faCreditCard} size="xl" style={{color: "#1554c1",}} /> <p>Create Physical Card</p></div>
 
           <div className='w-40 rounded-xl h-24 bg-gray-200 flex items-center p-4 text-xl  gap-4 hover:bg-gray-400'><FontAwesomeIcon icon={faPaperPlane} size='xl'/> <p>Send Money</p></div>
 
