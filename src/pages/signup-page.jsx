@@ -8,21 +8,33 @@ import 'react-toastify/dist/ReactToastify.css';
 export default function SignUP() {
 const [email, setEmail] =useState('')
 const [password, setPassword] = useState('')
+const [confirmPassword, setConfirmPassword] = useState('')
+const [passwordMessage, setPasswordMessage] = useState('')
 const [error, setError] = useState('')
 
 const { createUser } = UserAuth()
 
 const navigate = useNavigate()
 
+const handleConfirmPassword = (e) => {
+if (e.target.value === password) {
+    setConfirmPassword(password)
+    setPasswordMessage('')
+  } else {
+    setPasswordMessage('Passwords must match')
+    setConfirmPassword('')
+  }
+}
+
 const handleSubmit = async (e) => {
   e.preventDefault()
   setError('')
   try{
-      await createUser(email, password);
+      await createUser(email, confirmPassword);
 
       navigate('/signin');
 
-      toast("Account creation successful. LOGIN");
+      toast("Sign up successful. LOGIN");
       
   } 
   catch (e) {
@@ -62,8 +74,10 @@ const handleSubmit = async (e) => {
                 <input type="password" placeholder='Password'
                 onChange={(e) => setPassword(e.target.value)}
                 className='h-16 rounded-md text-xl my-2' />
-                
+                <p className='text-red-600'>{passwordMessage}</p>
+
                 <input type="text" placeholder='Confirm Password'
+                onChange={handleConfirmPassword}
                 className='h-16 rounded-md text-xl my-2' />
 
                 <p>By click the "Create account" button, you agree to knscardsolution's <span className='text-blue-800'>terms of service.</span></p>

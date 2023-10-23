@@ -1,6 +1,12 @@
 import React from 'react'
 import Select from 'react-dropdown-select'
 import { useState } from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMoneyBill1Wave, } from '@fortawesome/free-solid-svg-icons'
+import { faCcVisa } from '@fortawesome/free-brands-svg-icons';
+import mastercardSvg from '../images/mastercard-svg.svg'
+import verveSvg from '../images/verve-svg.svg'
+import visaSvg from '../images/visa-svg.svg'
 
 const CreateCardModal = ({isVisible, onClose}) => {
 
@@ -55,18 +61,21 @@ const cardData = {cardType, cardBrand}
                               options={cardBrands}>
 
                               </Select>
-         <div className='flex justify-between px-12'>
-<button className='border-4 border-opacity-25 border-black focus:border-opacity-100 focus:bg-red-800'>
-            <input className="" type='radio' name='card-brand' value='Verve' onChange={e => setCardBrand(e.target.value)} />
-         </button>
+         <div className='flex justify-between items-center'>
+        <div className='flex space-x-3 ' >
+            <input className="" type='radio' name='card-brand' value='Verve' id='verve' onChange={e => setCardBrand(e.target.value)} />
+            <label htmlFor="verve"><img src={verveSvg} alt="" className='w-14'/></label>
+            </div>
 
-         <button className='border-4 border-opacity-25 border-black focus:border-opacity-100 focus:bg-red-800'>
-            <input className="" type='radio' name='card-brand' value='Verve' onChange={e => setCardBrand(e.target.value)} />
-         </button>
+        <div className='flex space-x-3 ' >
+            <input className="" type='radio' name='card-brand' value='visa' id='visa' onChange={e => setCardBrand(e.target.value)} />
+            <label htmlFor="visa"><img src={visaSvg} alt="" className='w-14' /></label>
+            </div>
 
-            <button className='border-4 border-opacity-25 border-black focus:border-opacity-100 focus:bg-red-800'>
-            <input className="" type='radio' name='card-brand' value='Verve' onChange={e => setCardBrand(e.target.value)} />
-         </button>
+         <div className='flex space-x-3 '>
+            <input className="" type='radio' name='card-brand' id='mastercard' value='mastercard' onChange={e => setCardBrand(e.target.value)} />
+            <label htmlFor="mastercard"><img src={mastercardSvg} alt="" className='w-14' /></label>
+            </div>
     </div>
 
             </div>
