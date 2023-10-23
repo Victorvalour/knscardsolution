@@ -41,11 +41,11 @@ const handleSubmit = async (e) => {
   return (
     <div className='bg-cobalt h-[100vh] pt-16'>
         <div className=''>
-          <div className="flex items-center bg-white w-[80%] mx-auto rounded-xl py-2 px-3 mb-8 border-black border-4">
+          <div className="flex items-center justify-center bg-white w-[90%] mx-auto rounded-xl py-2 px-3 mb-8 border-black border-4">
      
-             <img src={Logo} alt="" className="w-20 h-16 p-0" />
+             <img src={Logo} alt="" className="w-16 h-14 p-0 " />
              <div>
-             <h2 className="font-gothic w-[90px] text-lg"><span className="text-cobalt text-lg text-start">KNS</span><span className="text-orange-500">CARD</span>SOLUTION</h2> </div>
+             <h2 className="font-gothic  text-md"><span className="text-cobalt text-lg text-start">KNS</span><span className="text-orange-500">CARD</span>SOLUTION</h2> </div>
              </div>
       
             <form 
