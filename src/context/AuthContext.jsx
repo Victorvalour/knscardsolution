@@ -33,7 +33,6 @@ const [firstName, setFirstName] = useState(localStorage.getItem('firstName') || 
   const updateUser = async (userObj) => {
     const loggedUser = userObj
     console.log(userObj)
-    navigate('/dashboard')
     setUser(userObj)
 const userUid = userObj.uid
     const docRef = doc(db, "userInfo", userUid);
@@ -41,7 +40,7 @@ const userUid = userObj.uid
     console.log(userUid)
     if (docSnap.exists()) {
       setSudoId(docSnap.data())
-      
+      navigate('/dashboard')
     }} 
 
 

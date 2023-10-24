@@ -23,12 +23,6 @@ import { useNavigate } from "react-router-dom";
   
   const addSudoId =  (sudoUid) => {
 
-   /* console.log(user.uid)
-    console.log(sudoUid)
-  const docRef = addDoc(collection(db, "users"), {sudoUid,
-
-  userId: `${user.uid}`})
-  */
  const userUid = user.uid
 console.log(userUid)
   const ref = doc(db, "userInfo", userUid)

@@ -76,7 +76,6 @@ const ProfileForm = ({children}) => {
     const [state, setState] = useState('');
     const [postalCode, setPostalCode] = useState('');
     const [country, setCountry] = useState('');
-    const [sudoUid, setSudoUid] = useState('');
 
     const billingAddress = {
       "line1" : line1,
@@ -195,20 +194,20 @@ const ProfileForm = ({children}) => {
     }
        ).then((response) => response.json()).then((response) => {
         console.log(response)
-
+        localStorage.setItem('userSudoId', response.data._id);
+        localStorage.setItem('firstName', response.data.individual.firstName);
+        
         console.log("data has been added")
         toast('Registration complete')
 
 
         const sudoId = {"sudoUid" : response.data._id}
   
-       navigate('/dashboard')
-    
-     setSudoUid(response.data._id);
+
 
 
      addSudoId(sudoId)
-     console.log(response.data._id)
+   
     
   updateUser(user)
       

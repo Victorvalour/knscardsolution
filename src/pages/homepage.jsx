@@ -10,7 +10,8 @@ import CreateCardModal from '../components/create-card-modal'
 
 const Homepage = () => {
   const [showModal, setShowModal] = useState(false)
-  const { user, firstName, sudoId} = UserAuth()
+  const { user, } = UserAuth();
+  const firstName = localStorage.getItem('firstName');
   const navigate = useNavigate()
   const handleCreateVirtualCard = () => {
     setShowModal(true)
