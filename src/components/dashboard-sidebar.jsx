@@ -71,35 +71,41 @@ className="fixed h-[60vh]  shadow-[10px_90px_42px_200px_rgba(0,0,0,0.49)] top-[8
            
                <div className='flex flex-col space-y-12'>
              
+             <Link to='/dashboard'>
                     <div key="1"
                     className="border-b-2 flex ml-[20%] gap-5 items-center">
                         <FontAwesomeIcon size='xl' icon={faHouse} />
-                        <a href="#"
-                        className="text-xl font-bold">Home</a>
+                        <p
+                        className="text-xl font-bold">Home</p>
                     </div>
+                    </Link>    
+
+                    <Link to='/cards'>
                     <div  
                     className="border-b-2 flex ml-[20%] gap-5 items-center">
                         <FontAwesomeIcon size='xl' icon={faCreditCard} />
-                        <a href="#"
-                        className="text-xl ">My cards</a>
+                        <p
+                        className="text-xl ">My cards</p>
                     </div>
+                    </Link>
+
                     <div  
                     className="border-b-2 flex ml-[20%] gap-5 items-center">
                         <FontAwesomeIcon size='xl' icon={faFileInvoice} />
-                        <a href="#"
-                        className="text-xl">Transactions</a>
+                        <p
+                        className="text-xl">Transactions</p>
                     </div>
                     <div  
                     className="border-b-2 flex ml-[20%] gap-5 items-center">
                         <FontAwesomeIcon size='xl' icon={faWallet} />
-                        <a href="#"
-                        className="text-xl">Accounts</a>
+                        <p
+                        className="text-xl">Accounts</p>
                     </div>
                     <div  key="3"
                     className="border-b-2 flex ml-[20%] gap-5 items-center">
                         <FontAwesomeIcon size='xl' icon={faUserCheck} />
-                        <a href="#"
-                        className="text-xl">Kyc verification</a>
+                        <p
+                        className="text-xl">Kyc verification</p>
                     </div>
                     </div>
 
@@ -107,9 +113,9 @@ className="fixed h-[60vh]  shadow-[10px_90px_42px_200px_rgba(0,0,0,0.49)] top-[8
                     className="gap-5 flex justify-center items-center">
 
                         <FontAwesomeIcon icon={faArrowRightFromBracket} size='xl'/>
-                        <a href="#"
+                        <p
                         className="text-2xl font-bold "
-                        onClick={handleLogout}>Log Out</a>
+                        onClick={handleLogout}>Log Out</p>
                
                 </div>
          
