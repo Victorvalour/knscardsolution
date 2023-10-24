@@ -6,6 +6,7 @@ import DashboardSidebar from '../components/dashboard-sidebar';
 import { motion } from 'framer-motion';
 import logo from '../images/KNS-LOGO-PNG.png'
 import cardChip from '../images/card-chip.png'
+import { ToastContainer, toast } from "react-toastify";
 
 const Cards = () => {
  const [cards, setCards] = useState([])
@@ -23,17 +24,35 @@ const Cards = () => {
       fetch(`https://api.sandbox.sudo.cards/cards/customer/${userSudoId}`, options)
         .then(response => response.json())
         .then((response) => {console.log(response.data)
-        setCards(response.data)})
+        setCards(response.data)
+    if (response.length == 0) {
+        toast('You don\'t have any cards', {
+            position: "top-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            });
+    }
+})
         .catch(err => console.error(err));
     }, [])
 
   return (
     <div>
         <DashboardSidebar />
-       <p>Cards</p>
+        <div className='mx-4'>
+       <p className='text-2xl mb-4 font-semibold'>Cards</p>
+       {cards.map((cardData) => 
 
-       <div className='relative -z-50 w-[400px] h-[250px] bg-black mx-auto rounded-2xl overflow-hidden bg-gradient-to-r from-gray-500 to-black'>
-        <motion.div
+
+    <div key={cardData._id}
+    className='relative -z-50 w-[400px] h-[250px] bg-black mx-auto rounded-2xl overflow-hidden bg-gradient-to-r from-gray-500 to-black mb-12'>
+
+       <motion.div
         className='absolute w-3 blur-sm h-[400px] bg-white translate-x-6 -top-6 opacity-25'
 
         initial={{
@@ -48,22 +67,29 @@ const Cards = () => {
         }}
       
         ></motion.div>
+
 <div className='absolute left-5 top-5 w-20 rotate-90'><img src={cardChip} alt="" /></div>
 
         <div className='absolute bg-white w-24 right-8 top-8 rounded-2xl -skew-x-12 rounded-tl-[1.5rem] rounded-br-[1.5rem] overflow-hidden' > <img src={logo} alt="" /></div>
        
       
-        <p className='font-ibmPlexMono absolute bottom-24 text-2xl text-yellow-400 left-16'>1234 5678 9101 1121</p>
+        <p className='font-ibmPlexMono absolute bottom-24 text-2xl text-yellow-400 left-16'>{cardData.maskedPan.slice(0, 4)} {cardData.maskedPan.slice(4, 8)} {cardData.maskedPan.slice(8, 12)} {cardData.maskedPan.slice(12, 16)}</p>
 
        <div className='absolute flex bottom-[65px] text-lg text-white left-44'>
         <p className='leading-3 text-[11px]'>valid <br /> through</p>
-         <p className=' bottom-[70px] text-lg text-white left-48'>| 12/24</p>
+         <p className=' bottom-[70px] text-lg text-white left-48'>| {cardData.expiryMonth}/{cardData.expiryYear}</p>
        </div>
 
-        <p className='font-ibmPlexMono absolute bottom-6 text-2xl text-white left-16'>Test User</p>
-        
+        <p className='font-ibmPlexMono absolute bottom-6 text-2xl text-white left-16'>{cardData.customer.name}</p>
+    
        </div>
+)}
 
+
+     {/*  
+  */  } 
+  </div>
+  <ToastContainer/>
     </div>
   )
 }
