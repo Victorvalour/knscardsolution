@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { UserId } from '../context/Context';
 import { UserAuth } from '../context/AuthContext';
+import BottomNav from '../components/bottom-nav';
 
 const Profile = () => {
 
@@ -61,7 +62,7 @@ const options = {
         <div></div>
 
         <div className='flex mt-4 ml-2 items-center'>
-            <div className='flex bg-teal-500 w-12 mr-4 h-12 rounded-xl items-center justify-center text-white text-3xl font-semibold'>JS</div>
+            <div className='flex bg-teal-500 w-14 mr-4 h-12 rounded-xl items-center justify-center text-white text-3xl font-semibold'>{firstName.slice(0, 1)}{lastName.slice(0, 1)}</div>
             <p className='text-3xl font-semibold'>{firstName} {lastName}</p>
         </div>
 
@@ -85,6 +86,8 @@ const options = {
 
 
         </div>}
+
+        <BottomNav />
     </div>
   )
 }

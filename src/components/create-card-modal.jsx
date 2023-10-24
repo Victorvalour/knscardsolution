@@ -60,6 +60,7 @@ const CreateCardModal = ({isVisible, onClose}) => {
         channels: {atm: true, pos: true, web: true, mobile: true},
         spendingLimits: [{interval: 'daily', amount: 100000}]
     };
+    const amount = 500;
 
     /* {
               type: 'virtual',
@@ -84,7 +85,7 @@ const CreateCardModal = ({isVisible, onClose}) => {
       
 
 
-        const cardData = {type, currency, issuerCountry, status, brand, spendingControls, customerId, debitAccountId}
+        const cardData = {type, currency, issuerCountry, status, brand, spendingControls, customerId, debitAccountId, amount}
         
 
         const options = {
@@ -115,7 +116,7 @@ const CreateCardModal = ({isVisible, onClose}) => {
 
                     navigate('/cards')
             } else {
-                toast.error('Something went wrong!', {
+                toast.error(response.message, {
                     position: "top-center",
                     autoClose: 5000,
                     hideProgressBar: false,
@@ -127,8 +128,8 @@ const CreateCardModal = ({isVisible, onClose}) => {
                     });
             }
             })
-            .catch((err) => {console.error(err)
-            alert('err')
+            .catch((err) => {
+            alert(err.message)
             });
 
     }
@@ -178,12 +179,12 @@ const CreateCardModal = ({isVisible, onClose}) => {
             </div>
 
         <div className='flex space-x-3 ' >
-            <input className="w-4" type='radio' name='card-brand' value='visa' id='visa' onChange={e => setCardBrand(e.target.value)} />
+            <input className="w-4" type='radio' name='card-brand' value='Visa' id='visa' onChange={e => setCardBrand(e.target.value)} />
             <label htmlFor="visa"><img src={visaSvg} alt="" className='w-14' /></label>
             </div>
 
          <div className='flex space-x-3 '>
-            <input className="w-4" type='radio' name='card-brand' id='mastercard' value='mastercard' onChange={e => setCardBrand(e.target.value)} />
+            <input className="w-4" type='radio' name='card-brand' id='mastercard' value='MasterCard' onChange={e => setCardBrand(e.target.value)} />
             <label htmlFor="mastercard"><img src={mastercardSvg} alt="" className='w-14' /></label>
             </div>
                 </div>

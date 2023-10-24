@@ -7,6 +7,7 @@ import { motion } from 'framer-motion';
 import logo from '../images/KNS-LOGO-PNG.png'
 import cardChip from '../images/card-chip.png'
 import { ToastContainer, toast } from "react-toastify";
+import BottomNav from '../components/bottom-nav';
 
 const Cards = () => {
  const [cards, setCards] = useState([])
@@ -25,7 +26,7 @@ const Cards = () => {
         .then(response => response.json())
         .then((response) => {console.log(response.data)
         setCards(response.data)
-    if (response.length == 0) {
+    if (response.data.length == 0) {
         toast('You don\'t have any cards', {
             position: "top-center",
             autoClose: 5000,
@@ -90,6 +91,7 @@ const Cards = () => {
   */  } 
   </div>
   <ToastContainer/>
+  <BottomNav />
     </div>
   )
 }

@@ -6,7 +6,7 @@ import { faCreditCard, faHouse, faGear, faUser } from '@fortawesome/free-solid-s
 
 const BottomNav = () => {
   return (
-    <div className='fixed flex bottom-0 w-full  h-[8vh] items-center justify-between px-4 border-t-4 border-slate-300'>
+    <div className='fixed flex bottom-0 w-full  h-[8vh] items-center justify-between px-4 border-t-4 border-slate-300 bg-white'>
 
 <FontAwesomeIcon icon={faHouse} style={{color: "#23334d"}} size='2x'/>
 
