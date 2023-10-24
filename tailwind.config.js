@@ -6,6 +6,7 @@ export default {
       fontFamily: {
         gothic: ["Dela Gothic One"],
         spaceGrotesk: ["Space Grotesk"],
+        ibmPlexMono: ["IBM Plex Mono"],
       },
       colors: {
         cobalt: "#0047ab",
