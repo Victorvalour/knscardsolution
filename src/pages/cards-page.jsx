@@ -11,6 +11,7 @@ import BottomNav from '../components/bottom-nav';
 
 const Cards = () => {
  const [cards, setCards] = useState([])
+ const [isPending, setIsPending] = useState(true)
 
     const userSudoId = localStorage.getItem('userSudoId');
 
@@ -26,6 +27,7 @@ const Cards = () => {
         .then(response => response.json())
         .then((response) => {console.log(response.data)
         setCards(response.data)
+       
     if (response.data.length == 0) {
         toast('You don\'t have any cards', {
             position: "top-center",
@@ -38,12 +40,21 @@ const Cards = () => {
             theme: "light",
             });
     }
+    setIsPending(false)
 })
         .catch(err => console.error(err));
     }, [])
 
   return (
     <div>
+
+{isPending ? <motion.div className='border-4 border-x-slate-400  border-t-teal-600 border-b-orange-500 mx-auto w-20 h-20 text-center mt-40 rounded-[50%]' 
+        
+        initial={{ rotate: 0 }}
+        animate={{ rotate: 360 }}
+        transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+  
+    ></motion.div> : <div> 
         <DashboardSidebar />
         <div className='mx-4'>
        <p className='text-2xl mb-4 font-semibold'>Cards</p>
@@ -92,7 +103,9 @@ const Cards = () => {
   </div>
   <ToastContainer/>
   <BottomNav />
-    </div>
+  </div>
+ }
+  </div>
   )
 }
 

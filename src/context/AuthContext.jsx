@@ -57,6 +57,7 @@ const userUid = userCred.user.uid
     const docRef = doc(db, "userInfo", userUid);
     const docSnap = await getDoc(docRef);
     if (docSnap.exists()) {
+      navigate('/dashboard')
       console.log(docSnap.data());
       setSudoId(docSnap.data());
       localStorage.setItem('userSudoId', docSnap.data().sudoUid);
@@ -85,7 +86,7 @@ const userUid = userCred.user.uid
           setIsPending(false)}
           )
       
-      navigate('/dashboard')
+
       toast.success('Login Successful', {
         position: "top-center",
         autoClose: 4000,

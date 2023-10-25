@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { UserId } from '../context/Context';
 import { UserAuth } from '../context/AuthContext';
 import BottomNav from '../components/bottom-nav';
+import { motion } from 'framer-motion';
 
 const Profile = () => {
 
@@ -44,14 +45,19 @@ const options = {
         setPhoneNumber(response.data.phoneNumber)
     })
     .catch(err => console.error(err));
-    setIsPending(false)
 }, [])
 
 
 
   return (
     <div>
-        {isPending ? <p>Loading...</p> :
+        {isPending ? <motion.div className='border-4 border-x-slate-400  border-t-teal-600 border-b-orange-500 mx-auto w-20 h-20 text-center mt-40 rounded-[50%]' 
+        
+            initial={{ rotate: 0 }}
+            animate={{ rotate: 360 }}
+            transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+      
+        ></motion.div> :
         <div> 
         <div className='flex w-full py-4 px-2 justify-between'>
             <div className='text-2xl font-semibold underline'><p>Profile</p></div>

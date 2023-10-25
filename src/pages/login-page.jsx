@@ -6,6 +6,7 @@ import { UserAuth } from '../context/AuthContext';
 import { UserId } from '../context/Context';
 import { ToastContainer, toast } from "react-toastify";
 import passwordVisibilityToggle from '../components/password-visibility-toggle';
+import { motion } from 'framer-motion';
 
 
 
@@ -17,6 +18,8 @@ const [error, setError] = useState('')
 const navigate = useNavigate()
 const [PasswordInputType, ToggleIcon] = passwordVisibilityToggle();
 
+
+
 const  { login } = UserAuth();
 
 
@@ -26,8 +29,10 @@ const handleSubmit = async (e) => {
   e.preventDefault();
   setError('')
   try {
+ 
       await login(email, password)
     
+   
       //getUserData();
   
      
