@@ -28,7 +28,7 @@ useEffect(() => {
 }, [])
 
   return (
-    <div className="carousel-container overflow-hidden relative">
+    <div className="lg:hidden carousel-container overflow-hidden relative">
      
       <div className="carousel-slides flex transition-transform ease-out duration-500" style={{transform: `translateX(-${currentSlide * 100}%)`}}>
         {images.map((image, index) => (
