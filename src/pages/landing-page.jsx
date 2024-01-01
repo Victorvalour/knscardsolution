@@ -74,7 +74,7 @@ The <span className="text-black">NO. 1</span> solution to all your payment needs
   
         </div>
         
-        <div className="mx-auto flex justify-around w-[800px]">
+        <div className="mx-auto flex justify-around w-full">
         <Carousel />
         </div>
         <div className="hidden lg:flex w-full mx-auto justify-between ml-2 mt-10">
